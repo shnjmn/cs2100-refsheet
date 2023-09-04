@@ -1,0 +1,385 @@
+\documentclass{article}
+
+\usepackage{caption, subcaption}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+\tikzstyle{branch}=[fill,shape=circle,minimum size=3pt,inner sep=0pt]
+
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    % landscape,
+    margin=0.6cm,
+    headheight=15pt
+}
+\setlength\parindent{0pt}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,lining,scaled=.96]{FiraSans}
+\usepackage[lining,scaled=.96]{FiraMono}
+% \usepackage{concmath}
+\usepackage{eulervm}
+% \renewcommand*\familydefault{\ttdefault}
+
+\usepackage{bytefield}
+\usepackage{tabto}
+\usepackage{amssymb}
+
+\newcommand{\rd}{R\textsubscript{D}}
+\newcommand{\rt}{R\textsubscript{T}}
+\newcommand{\rs}{R\textsubscript{S}}
+% \newcommand{\rd}{rd}
+% \newcommand{\rt}{rt}
+% \newcommand{\rs}{rs}
+\newcommand{\imm}[1]{C\textsubscript{#1}}
+
+\newcommand{\mipss}{\textsuperscript{$\pm$}}
+\newcommand{\mipsu}{\textsuperscript{$\varnothing$}}
+
+\newcommand{\mipsaddr}{C\textsubscript{26}\textsuperscript{$\varnothing$}}
+\newcommand{\mipsshift}{C\textsubscript{5}\textsuperscript{$\varnothing$}}
+\newcommand{\floatright}{\newline\phantom{.}\hfill}
+\newcommand{\insntab}{\tabto{3em}}
+
+\newenvironment{mipsinsnr}{
+    \begin{center}
+    \begin{bytefield}[boxformatting=\small\ttfamily\centering,bitwidth=0.03125\linewidth]{32}
+        \bitheader[endianness=big]{0,5,6,10,11,15,16,20,21,25,26,31} \\
+}{
+    \end{bytefield}
+    \end{center}
+}
+
+\newenvironment{mipsinsni}{
+    \begin{center}
+    \begin{bytefield}[boxformatting=\ttfamily\small\centering,bitwidth=0.03125\linewidth]{32}
+        \bitheader[endianness=big]{0,15,16,20,21,25,26,31} \\
+}{
+    \end{bytefield}
+    \end{center}
+}
+
+
+\newenvironment{mipsinsndispr}[3]{
+	\begin{minipage}[t][3em][c]{0.32\linewidth}
+        \texttt{#1} \insntab \texttt{#2}
+	\end{minipage}
+    \hfill
+	\begin{minipage}[t][3em][c]{0.64\linewidth}
+		\begin{mipsinsnr}
+}{
+        \end{mipsinsnr}
+        \floatright {\footnotesize {#3}}
+    \end{minipage}
+}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\section{MIPS Instructions}
+
+
+\begin{multicols}{2}
+
+	\begin{mipsinsndispr}{ADD}{\rd{}, \rs{}, \rt{}}{\tt \rd{} = \rs{} + \rt{}}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100000}
+	\end{mipsinsndispr}
+
+    xxx
+
+	\begin{minipage}[t][3em][c]{0.32\linewidth}
+		\texttt{ADD  \rd{}, \rs{}, \rt{}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t][3em][c]{0.64\linewidth}
+		\begin{mipsinsnr}
+			\bitbox{6}{000000} &
+			\bitbox{5}{\rs} &
+			\bitbox{5}{\rt} &
+			\bitbox{5}{\rd} &
+			\bitbox{5}{00000} &
+			\bitbox{6}{100000}
+		\end{mipsinsnr}
+	\end{minipage}
+    \floatright
+
+	% \subsection*{Arithmetic Operations}
+
+	\texttt{ADD  \rd{}, \rs{}, \rt{}}
+	\floatright
+	{\small \rd{} = \rs{} + \rt{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100000}
+	\end{mipsinsnr}
+
+	ADDI \insntab \rt{}, \rs{}, \imm{16}
+	\floatright
+	{\small \rt{} = \rs{} + \imm{16}\mipss{}}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	SUB  \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = \rs{} - \rt{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100010}
+	\end{mipsinsnr}
+
+	LUI \insntab  \rt{}, \imm{16}
+	\floatright
+	{\small \rt{} = \imm{16} \verb|<<| 16}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001111} &
+		\bitbox{5}{00000} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	% \subsection*{Shift and Rotate Operations}
+
+	SLL \insntab  \rd{}, \rt{}, \imm{5}
+	\floatright
+	{\small \rd{} = \rt{} \verb|<<| \imm{5}\mipsu{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{00000} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{\imm{5}} &
+		\bitbox{6}{000000}
+	\end{mipsinsnr}
+
+	SRL \insntab  \rd{}, \rt{}, \imm{5}
+	\floatright
+	{\small \rd{} = \rt{}\mipsu{} \verb|>>| \imm{5}\mipsu{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{00000} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{\imm{5}} &
+		\bitbox{6}{000010}
+	\end{mipsinsnr}
+
+	\newcolumn
+	% \subsection*{Logical and Bit-Field Operations}
+
+	AND  \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = \rs{} \& \rt{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100100}
+	\end{mipsinsnr}
+
+	ANDI \insntab  \rt{}, \rs{}, \imm{16}
+	\floatright
+	{\small \rt{} = \rs{} \& \imm{16}\mipsu{}}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001100} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	OR   \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = \rs{} | \rt{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100101}
+	\end{mipsinsnr}
+
+	ORI  \insntab  \rt{}, \rs{}, \imm{16}
+	\floatright
+	{\small \rt{} = \rs{} | \imm{16}\mipsu{}}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001101} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	NOR  \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = \verb|~|(\rs{} | \rt{})}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100111}
+	\end{mipsinsnr}
+
+	XOR  \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = \rs{} \verb|^| \rt{}}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100110}
+	\end{mipsinsnr}
+
+	XORI \insntab  \rt{}, \rs{}, \imm{16}
+	\floatright
+	{\small \rt{} = \rs{} \verb|^| \imm{16}\mipsu{}}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001110} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	\newcolumn
+	% \subsection*{Condition Testing Operations}
+
+	SLT \insntab  \rd{}, \rs{}, \rt{}
+	\floatright
+	{\small \rd{} = (\rs{} $<$ \rt{})}
+
+	\begin{mipsinsnr}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{101010}
+	\end{mipsinsnr}
+
+	SLTI \insntab  \rt{}, \rs{}, \imm{16}\mipss{}
+	\floatright
+	{\small \rt{} = (\rs{} $<$ \imm{16}\mipss{})}
+
+	\begin{mipsinsni}
+		\bitbox{6}{001010} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	% \subsection*{Jumps and Branches}
+
+	BEQ \insntab  \rs{}, \rt{}, \imm{16}\mipss{}
+	\floatright
+	{\small \textsc{if} \rs{} = \rt{}, PC += \imm{16}\mipss{} \verb|<<| 2}
+
+	\begin{mipsinsni}
+		\bitbox{6}{000100} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	BNE \insntab  \rs{}, \rt{}, \imm{16}\mipss{}
+	\floatright
+	{\small \textsc{if} \rs{} $\neq$ \rt{}, PC += \imm{16}\mipss{} \verb|<<| 2}
+
+	\begin{mipsinsni}
+		\bitbox{6}{000101} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	\begin{mipsinsndispr}{J}{\mipsaddr{}}{\tt PC = PC \& 0xf0 | (\mipsaddr{} \verb|<<| 2)}
+		\bitbox{6}{000000} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{5}{\rd} &
+		\bitbox{5}{00000} &
+		\bitbox{6}{100000}
+	\end{mipsinsndispr}
+
+	J   \insntab  \mipsaddr{}
+	\floatright
+	{\small PC = PC[31:28]::(\mipsaddr{} \verb|<<| 2)}
+
+	\begin{center}
+		\begin{bytefield}[boxformatting=\small\centering,bitwidth=0.03125\linewidth]{32}
+			\bitheader[endianness=big]{0,25,26,31} \\
+			\bitbox{6}{000010} &
+			\bitbox{26}{\mipsaddr{}}
+		\end{bytefield}
+	\end{center}
+
+	% \subsection*{Load and Store Operations}
+
+	LW  \insntab  \rt{}, \imm{16}\mipss{}(\rs{})
+	\floatright
+	{\small \rt{} = Mem[\rs{} + \imm{16}\mipss{}]}
+
+	\begin{mipsinsni}
+		\bitbox{6}{100011} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+	SW  \insntab  \rt{}, \imm{16}\mipss{}(\rs{})
+	\floatright
+	{\small Mem[\rs{} + \imm{16}\mipss{}] = \rt{}}
+
+	\begin{mipsinsni}
+		\bitbox{6}{101011} &
+		\bitbox{5}{\rs} &
+		\bitbox{5}{\rt} &
+		\bitbox{16}{\imm{16}}
+	\end{mipsinsni}
+
+\end{multicols}
+
+
+\section{Digital Logics}
+\input{logic-gates.tex}
+
+\end{document}

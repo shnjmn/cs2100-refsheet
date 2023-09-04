@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\input{preamable.tex}
+
+\begin{document}
+\begin{tikzpicture}[label distance=2mm]
+	\node[xnor gate US, draw, logic gate inputs=nn] at (1,0) (G) {};
+
+	\node (a) at ($(G.input 1) + (-0.7,+0.1)$) {$a$};
+	\node (b) at ($(G.input 2) + (-0.7,-0.1)$) {$b$};
+	\node (c) at (2.4, 0) {$\overline{a \oplus b}$};
+
+	\draw ($(G.input 1) + (-0.5,0)$) |- (G.input 1);
+	\draw ($(G.input 2) + (-0.5,0)$) |- (G.input 2);
+	\draw (1.9, 0)  |- (G.output);
+\end{tikzpicture}
+\end{document}
