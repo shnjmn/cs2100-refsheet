@@ -30,7 +30,7 @@
 \geometry{
     a4paper,
     landscape,
-    margin=0.6cm,
+    margin=0.8cm,
     headheight=15pt
 }
 
@@ -43,17 +43,22 @@
 
 \thispagestyle{empty}
 
-\begin{minipage}[t]{0.2\linewidth}
-    \section{Number System}
-    \input{content/number-system.tex}
-\end{minipage}
-\begin{minipage}[t]{0.32\linewidth}
-    \section{Digital Logics}
-    \input{content/logic-gates.tex}
-\end{minipage}
+
 \begin{minipage}[t]{0.48\linewidth}
-    \section{MIPS Instructions}
+    \section*{MIPS Instructions}
     \input{content/insn.tex}
 \end{minipage}
+\hfill
+\begin{minipage}[t]{0.2\linewidth}
+    \section*{Number System}
+    \centering
+    \input{content/number-system.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.28\linewidth}
+    \section*{Digital Logics}
+    \input{content/logic-gates.tex}
+\end{minipage}
+
 
 \end{document}
