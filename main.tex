@@ -17,10 +17,14 @@
 \usepackage{subcaption}
 \usepackage{tabto}
 \usepackage{textcomp}
+\usepackage{grid-system}
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
-\tikzstyle{branch}=[fill,shape=circle,minimum size=3pt,inner sep=0pt]
+\usepackage[american]{circuitikz}
+\ctikzset{
+    logic ports=ieee,
+    logic ports/scale=0.7,
+}
 
 \usepackage{geometry}
 \geometry{
@@ -39,15 +43,17 @@
 
 \thispagestyle{empty}
 
-\begin{minipage}[t]{0.48\linewidth}
-	\section{Digital Logics}
-	\begin{multicols}{4}
-		\input{content/logic-gates.tex}
-	\end{multicols}
+\begin{minipage}[t]{0.2\linewidth}
+    \section{Number System}
+    \input{content/number-system.tex}
+\end{minipage}
+\begin{minipage}[t]{0.32\linewidth}
+    \section{Digital Logics}
+    \input{content/logic-gates.tex}
 \end{minipage}
 \begin{minipage}[t]{0.48\linewidth}
-	\section{MIPS Instructions}
-	\input{content/insn.tex}
+    \section{MIPS Instructions}
+    \input{content/insn.tex}
 \end{minipage}
 
 \end{document}
