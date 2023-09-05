@@ -1,136 +1,132 @@
 % chktex-file 44
 
-\begin{multicols}{4}
+\subsection*{NOT}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.not.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{c|c}
+		\toprule
+		$a$ & $\overline{a}$ \\
+		\midrule
+		$0$ & $1$            \\
+		$1$ & $0$            \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\subsection*{NOT}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.not.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{c|c}
-			\toprule
-			$a$ & $\overline{a}$ \\
-			\midrule
-			$0$ & $1$            \\
-			$1$ & $0$            \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\newcolumn
 
-	\newcolumn
+\subsection*{AND}
 
-	\subsection*{AND}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.and.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $a\cdot b$ \\
+		\midrule
+		$0$ & $0$ & $0$        \\
+		$0$ & $1$ & $0$        \\
+		$1$ & $0$ & $0$        \\
+		$1$ & $1$ & $1$        \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.and.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $a\cdot b$ \\
-			\midrule
-			$0$ & $0$ & $0$        \\
-			$0$ & $1$ & $0$        \\
-			$1$ & $0$ & $0$        \\
-			$1$ & $1$ & $1$        \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\subsection*{NAND}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.nand.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $\overline{a\cdot b}$ \\
+		\midrule
+		$0$ & $0$ & $1$                   \\
+		$0$ & $1$ & $1$                   \\
+		$1$ & $0$ & $1$                   \\
+		$1$ & $1$ & $0$                   \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\subsection*{NAND}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.nand.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $\overline{a\cdot b}$ \\
-			\midrule
-			$0$ & $0$ & $1$                   \\
-			$0$ & $1$ & $1$                   \\
-			$1$ & $0$ & $1$                   \\
-			$1$ & $1$ & $0$                   \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\columnbreak
 
-	\columnbreak
+\subsection*{OR}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.or.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $a+b$ \\
+		\midrule
+		$0$ & $0$ & $0$   \\
+		$0$ & $1$ & $1$   \\
+		$1$ & $0$ & $1$   \\
+		$1$ & $1$ & $1$   \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\subsection*{OR}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.or.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $a+b$ \\
-			\midrule
-			$0$ & $0$ & $0$   \\
-			$0$ & $1$ & $1$   \\
-			$1$ & $0$ & $1$   \\
-			$1$ & $1$ & $1$   \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\subsection*{NOR}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.nor.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $\overline{a+b}$ \\
+		\midrule
+		$0$ & $0$ & $1$              \\
+		$0$ & $1$ & $0$              \\
+		$1$ & $0$ & $0$              \\
+		$1$ & $1$ & $0$              \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\subsection*{NOR}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.nor.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $\overline{a+b}$ \\
-			\midrule
-			$0$ & $0$ & $1$              \\
-			$0$ & $1$ & $0$              \\
-			$1$ & $0$ & $0$              \\
-			$1$ & $1$ & $0$              \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\columnbreak
 
-	\columnbreak
+\subsection*{XOR}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.xor.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $a \oplus b$ \\
+		\midrule
+		$0$ & $0$ & $0$          \\
+		$0$ & $1$ & $1$          \\
+		$1$ & $0$ & $1$          \\
+		$1$ & $1$ & $0$          \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 
-	\subsection*{XOR}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.xor.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $a \oplus b$ \\
-			\midrule
-			$0$ & $0$ & $0$          \\
-			$0$ & $1$ & $1$          \\
-			$1$ & $0$ & $1$          \\
-			$1$ & $1$ & $0$          \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
-
-	\subsection*{XNOR}
-	\begin{minipage}[t][2em][c]{\linewidth}
-		\centering
-		\includegraphics{image/fig.xnor.pdf}
-	\end{minipage}
-	\begin{center}
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $\overline{a \oplus b}$ \\
-			\midrule
-			$0$ & $0$ & $1$                     \\
-			$0$ & $1$ & $0$                     \\
-			$1$ & $0$ & $0$                     \\
-			$1$ & $1$ & $1$                     \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
-
-\end{multicols}
+\subsection*{XNOR}
+\begin{minipage}[t][2em][c]{\linewidth}
+	\centering
+	\includegraphics{image/fig.xnor.pdf}
+\end{minipage}
+\begin{center}
+	\begin{tabular}{cc|c}
+		\toprule
+		$a$ & $b$ & $\overline{a \oplus b}$ \\
+		\midrule
+		$0$ & $0$ & $1$                     \\
+		$0$ & $1$ & $0$                     \\
+		$1$ & $0$ & $0$                     \\
+		$1$ & $1$ & $1$                     \\
+		\bottomrule
+	\end{tabular}
+\end{center}

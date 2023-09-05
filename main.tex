@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,lining,scaled=.96]{FiraSans}
 \usepackage[lining,scaled=.96]{FiraMono}
-\usepackage{eulervm}
+\usepackage{concmath}
 
 \usepackage{amssymb}
 \usepackage{booktabs}
@@ -25,22 +25,29 @@
 \usepackage{geometry}
 \geometry{
     a4paper,
-    % landscape,
+    landscape,
     margin=0.6cm,
     headheight=15pt
 }
+
+\usepackage{enumitem}
+\setlist{nosep}
+
 \setlength\parindent{0pt}
-
-
 
 \begin{document}
 
 \thispagestyle{empty}
 
-\section{MIPS Instructions}
-\input{content/insn.tex}
-
-\section{Digital Logics}
-\input{content/logic-gates.tex}
+\begin{minipage}[t]{0.48\linewidth}
+	\section{Digital Logics}
+	\begin{multicols}{4}
+		\input{content/logic-gates.tex}
+	\end{multicols}
+\end{minipage}
+\begin{minipage}[t]{0.48\linewidth}
+	\section{MIPS Instructions}
+	\input{content/insn.tex}
+\end{minipage}
 
 \end{document}

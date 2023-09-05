@@ -4,11 +4,11 @@
 \newcommand{\rs}{R\textsubscript{S}}
 \newcommand{\imm}[1]{C\textsubscript{#1}}
 
-\newcommand{\mipss}{\textsuperscript{$\pm$}}
-\newcommand{\mipsu}{\textsuperscript{$\varnothing$}}
+\newcommand{\mipss}{\textsuperscript{\textpm}}
+\newcommand{\mipsu}{\textsuperscript{\textzerooldstyle}}
 
-\newcommand{\mipsaddr}{C\textsubscript{26}\textsuperscript{$\varnothing$}}
-\newcommand{\mipsshift}{C\textsubscript{5}\textsuperscript{$\varnothing$}}
+% \newcommand{\mipsaddr}{C\textsubscript{26}\textsuperscript{$\varnothing$}}
+% \newcommand{\mipsshift}{C\textsubscript{5}\textsuperscript{$\varnothing$}}
 \newcommand{\floatright}{\newline\phantom{.}\hfill}
 \newcommand{\insntab}{\tabto{3em}}
 
@@ -17,16 +17,16 @@
 \newcommand{\opxor}{\ensuremath{\oplus}}
 
 \newenvironment{mipsinsn}[3]{
-	\begin{minipage}[c]{12em}
+	\begin{minipage}[c]{10em}
 		\texttt{#1} \insntab \texttt{#2}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[c]{0.3\linewidth}
-		\tt #3
+	\begin{minipage}[c]{0.28\linewidth}
+		\footnotesize #3
 	\end{minipage}
 	\hfill
-	\begin{minipage}[c]{0.4\linewidth}
-		\begin{bytefield}[boxformatting=\small\ttfamily\centering,bitwidth=0.03125\linewidth,bitheight=1.5em]{32}
+	\begin{minipage}[c]{0.42\linewidth}
+		\begin{bytefield}[boxformatting=\footnotesize\ttfamily\centering,bitwidth=0.03125\linewidth,bitheight=1.5em]{32}
 			}{
 		\end{bytefield}
 	\end{minipage}
@@ -140,7 +140,7 @@
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs{} $<$ \rt{})}
+\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs{} \textless{} \rt{})}
 	\bitbox{6}{000000} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
@@ -149,15 +149,15 @@
 	\bitbox{6}{101010}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}\mipss{}}{\rt{} = (\rs{} $<$ \imm{16}\mipss{})}
+\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}}{\rt{} = (\rs{} \textless{} \imm{16}\mipss{})}
 	\bitbox{6}{001010} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{BEQ}{\rs{}, \rt{}, \imm{16}\mipss{}}{
-		PC += \imm{16}\mipss{} \opsl{} 2 \textsc{if} \rs{} = \rt{}
+\begin{mipsinsn}{BEQ}{\rs{}, \rt{}, \imm{16}}{
+		\textsc{if} \rs{} == \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
 	}
 	\bitbox{6}{000100} &
 	\bitbox{5}{\rs} &
@@ -165,8 +165,8 @@
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{BNE}{\rs{}, \rt{}, \imm{16}\mipss{}}{
-		PC += \imm{16}\mipss{} \opsl{} 2 \textsc{if} \rs{} != \rt{}
+\begin{mipsinsn}{BNE}{\rs{}, \rt{}, \imm{16}}{
+		\textsc{if} \rs{} != \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
 	}
 	\bitbox{6}{000101} &
 	\bitbox{5}{\rs} &
@@ -174,23 +174,29 @@
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{J}{\mipsaddr{}}{PC = PC\textsubscript{31:28} | (\mipsaddr{} \Verb|<<| 2)}
+\begin{mipsinsn}{J}{\imm{26}}{
+		PC = PC\textsubscript{31:28} | (\imm{26} \opsl{} 2)
+	}
 	\bitbox{6}{000010} &
 	\bitbox{26}{\imm{26}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{LW}{\rt{}, \imm{16}\mipss{}(\rs{})}{\rt{} = Mem[\rs{} + \imm{16}\mipss{}]}
+\begin{mipsinsn}{LW}{\rt{}, \imm{16}(\rs{})}{\rt{} = Mem[\rs{} + \imm{16}\mipss{}]}
 	\bitbox{6}{100011} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SW}{\rt{}, \imm{16}\mipss{}(\rs{})}{Mem[\rs{} + \imm{16}\mipss{}] = \rt{}}
+\begin{mipsinsn}{SW}{\rt{}, \imm{16}(\rs{})}{Mem[\rs{} + \imm{16}\mipss{}] = \rt{}}
 	\bitbox{6}{101011} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\phantom{.}
+\begin{itemize}
+	\footnotesize
+	\item[\textpm] signed operator or sign-extended
+	\item[\textzerooldstyle] unsigned operator or zero-extended
+\end{itemize}
