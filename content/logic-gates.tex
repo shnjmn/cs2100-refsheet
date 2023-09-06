@@ -1,31 +1,7 @@
 % chktex-file 44
 
-\begin{row}{12}{2}
-	\begin{cell}{6}
-		\subsection*{NOT}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[not port](G){};
-			\draw (G.in) node[anchor=east]{$a$};
-			\draw (G.out) node[anchor=west]{$\overline{a}$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{cell}
-
-	\begin{cell}{6}
-		\centering
-		\begin{tabular}{c|c}
-			\toprule
-			$a$ & $\overline{a}$ \\
-			\midrule
-			$0$ & $1$            \\
-			$1$ & $0$            \\
-			\bottomrule
-		\end{tabular}
-		\vspace{1ex}
-	\end{cell}
-
-	\begin{cell}{6}
+\begin{Row}
+	\begin{Cell}{1}
 		\subsection*{AND}
 		\centering
 		\begin{circuitikz}[]
@@ -35,20 +11,33 @@
 			\draw (G.out) node[anchor=west]{$a \cdot b$};
 		\end{circuitikz}
 		\vspace{1ex}
-	\end{cell}
-	\begin{cell}{6}
-		\subsection*{NAND}
+	\end{Cell}
+	\begin{Cell}{1}
+		\subsection*{OR}
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[nand port](G){};
+			\draw (0,0) node[or port](G){};
 			\draw (G.in 1) node[anchor=east]{$a$};
 			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a \cdot b}$};
+			\draw (G.out) node[anchor=west]{$a + b$};
 		\end{circuitikz}
 		\vspace{1ex}
-	\end{cell}
+	\end{Cell}
+	\begin{Cell}{1}
+		\subsection*{XOR}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[xor port](G){};
+			\draw (G.in 1) node[anchor=east]{$a$};
+			\draw (G.in 2) node[anchor=east]{$b$};
+			\draw (G.out) node[anchor=west]{$a \oplus b$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
+\end{Row}
 
-	\begin{cell}{6}
+\begin{Row}
+	\begin{Cell}{1}
 		\centering
 		\begin{tabular}{cc|c}
 			\toprule
@@ -61,49 +50,8 @@
 			\bottomrule
 		\end{tabular}
 		\vspace{1ex}
-
-	\end{cell}
-	\begin{cell}{6}
-
-		\centering
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $\overline{a\cdot b}$ \\
-			\midrule
-			$0$ & $0$ & $1$                   \\
-			$0$ & $1$ & $1$                   \\
-			$1$ & $0$ & $1$                   \\
-			$1$ & $1$ & $0$                   \\
-			\bottomrule
-		\end{tabular}
-		\vspace{1ex}
-
-	\end{cell}
-
-	\begin{cell}{6}
-		\subsection*{OR}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[or port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$a + b$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{cell}
-	\begin{cell}{6}
-		\subsection*{NOR}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[nor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a + b}$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{cell}
-
-	\begin{cell}{6}
+	\end{Cell}
+	\begin{Cell}{1}
 		\centering
 		\begin{tabular}{cc|c}
 			\toprule
@@ -116,46 +64,8 @@
 			\bottomrule
 		\end{tabular}
 		\vspace{1ex}
-	\end{cell}
-	\begin{cell}{6}
-		\centering
-		\begin{tabular}{cc|c}
-			\toprule
-			$a$ & $b$ & $\overline{a+b}$ \\
-			\midrule
-			$0$ & $0$ & $1$              \\
-			$0$ & $1$ & $0$              \\
-			$1$ & $0$ & $0$              \\
-			$1$ & $1$ & $0$              \\
-			\bottomrule
-		\end{tabular}
-		\vspace{1ex}
-	\end{cell}
-
-	\begin{cell}{6}
-		\subsection*{XOR}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[xor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$a \oplus b$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{cell}
-	\begin{cell}{6}
-		\subsection*{XNOR}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[xnor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a \oplus b}$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{cell}
-
-	\begin{cell}{6}
+	\end{Cell}
+	\begin{Cell}{1}
 		\centering
 		\begin{tabular}{cc|c}
 			\toprule
@@ -168,8 +78,73 @@
 			\bottomrule
 		\end{tabular}
 		\vspace{1ex}
-	\end{cell}
-	\begin{cell}{6}
+	\end{Cell}
+\end{Row}
+\begin{Row}
+	\begin{Cell}{1}
+		\subsection*{NAND}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[nand port](G){};
+			\draw (G.in 1) node[anchor=east]{$a$};
+			\draw (G.in 2) node[anchor=east]{$b$};
+			\draw (G.out) node[anchor=west]{$\overline{a \cdot b}$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\subsection*{NOR}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[nor port](G){};
+			\draw (G.in 1) node[anchor=east]{$a$};
+			\draw (G.in 2) node[anchor=east]{$b$};
+			\draw (G.out) node[anchor=west]{$\overline{a + b}$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\subsection*{XNOR}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[xnor port](G){};
+			\draw (G.in 1) node[anchor=east]{$a$};
+			\draw (G.in 2) node[anchor=east]{$b$};
+			\draw (G.out) node[anchor=west]{$\overline{a \oplus b}$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
+\end{Row}
+\begin{Row}
+	\begin{Cell}{1}
+		\centering
+		\begin{tabular}{cc|c}
+			\toprule
+			$a$ & $b$ & $\overline{a\cdot b}$ \\
+			\midrule
+			$0$ & $0$ & $1$                   \\
+			$0$ & $1$ & $1$                   \\
+			$1$ & $0$ & $1$                   \\
+			$1$ & $1$ & $0$                   \\
+			\bottomrule
+		\end{tabular}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\centering
+		\begin{tabular}{cc|c}
+			\toprule
+			$a$ & $b$ & $\overline{a+b}$ \\
+			\midrule
+			$0$ & $0$ & $1$              \\
+			$0$ & $1$ & $0$              \\
+			$1$ & $0$ & $0$              \\
+			$1$ & $1$ & $0$              \\
+			\bottomrule
+		\end{tabular}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
 		\centering
 		\begin{tabular}{cc|c}
 			\toprule
@@ -182,5 +157,44 @@
 			\bottomrule
 		\end{tabular}
 		\vspace{1ex}
-	\end{cell}
-\end{row}
+	\end{Cell}
+\end{Row}
+
+\begin{Row}
+	\begin{Cell}{1}
+		\subsection*{NOT}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[not port](G){};
+			\draw (G.in) node[anchor=east]{$a$};
+			\draw (G.out) node[anchor=west]{$\overline{a}$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\phantom{x}
+	\end{Cell}
+	\begin{Cell}{1}
+		\phantom{x}
+	\end{Cell}
+\end{Row}
+\begin{Row}
+	\begin{Cell}{1}
+		\centering
+		\begin{tabular}{c|c}
+			\toprule
+			$a$ & $\overline{a}$ \\
+			\midrule
+			$0$ & $1$            \\
+			$1$ & $0$            \\
+			\bottomrule
+		\end{tabular}
+		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\phantom{x}
+	\end{Cell}
+	\begin{Cell}{1}
+		\phantom{x}
+	\end{Cell}
+\end{Row}

@@ -29,7 +29,7 @@
 \usepackage{geometry}
 \geometry{
     a4paper,
-    landscape,
+    % landscape,
     margin=0.8cm,
     headheight=15pt
 }
@@ -43,22 +43,28 @@
 
 \thispagestyle{empty}
 
+\null
+\vfill
 
-\begin{minipage}[t]{0.48\linewidth}
+\begin{minipage}[t]{\linewidth}
     \section*{MIPS Instructions}
     \input{content/insn.tex}
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.2\linewidth}
-    \section*{Number System}
+
+\vfill
+\vfill
+
+\begin{minipage}[t]{0.3\linewidth}
+    \section*{Nibble}
     \centering
     \input{content/number-system.tex}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.28\linewidth}
-    \section*{Digital Logics}
+\begin{minipage}[t]{0.68\linewidth}
+    \section*{Truth Tables}
     \input{content/logic-gates.tex}
 \end{minipage}
 
+\vfill
 
 \end{document}
