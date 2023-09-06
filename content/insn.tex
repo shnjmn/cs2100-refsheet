@@ -140,7 +140,7 @@
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs{} \textless{} \rt{})}
+\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs\mipss{} \textless{} \rt\mipss{}) ? 1 : 0}
 	\bitbox{6}{000000} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
@@ -149,7 +149,7 @@
 	\bitbox{6}{101010}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}}{\rt{} = (\rs{} \textless{} \imm{16}\mipss{})}
+\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}}{\rt{} = (\rs\mipss{} \textless{} \imm{16}\mipss{}) ? 1 : 0}
 	\bitbox{6}{001010} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
@@ -181,14 +181,14 @@
 	\bitbox{26}{\imm{26}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{LW}{\rt{}, \imm{16}(\rs{})}{\rt{} = Mem[\rs{} + \imm{16}\mipss{}]}
+\begin{mipsinsn}{LW}{\rt{}, \imm{16}(\rs{})}{\rt{} = Mem\textsubscript{32}(\rs{} + \imm{16}\mipss{})}
 	\bitbox{6}{100011} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
 	\bitbox{16}{\imm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SW}{\rt{}, \imm{16}(\rs{})}{Mem[\rs{} + \imm{16}\mipss{}] = \rt{}}
+\begin{mipsinsn}{SW}{\rt{}, \imm{16}(\rs{})}{Mem\textsubscript{32}(\rs{} + \imm{16}\mipss{}) = \rt{}}
 	\bitbox{6}{101011} &
 	\bitbox{5}{\rs} &
 	\bitbox{5}{\rt} &
