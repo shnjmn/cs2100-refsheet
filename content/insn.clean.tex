@@ -1,0 +1,100 @@
+
+\newcommand{\rd}{R\textsubscript{D}}
+\newcommand{\rt}{R\textsubscript{T}}
+\newcommand{\rs}{R\textsubscript{S}}
+\newcommand{\imm}[1]{C\textsubscript{#1}}
+
+\newcommand{\mipss}{\textsuperscript{\textpm}}
+\newcommand{\mipsu}{\textsuperscript{\textzerooldstyle}}
+
+% \newcommand{\mipsaddr}{C\textsubscript{26}\textsuperscript{$\varnothing$}}
+% \newcommand{\mipsshift}{C\textsubscript{5}\textsuperscript{$\varnothing$}}
+\newcommand{\floatright}{\newline\phantom{.}\hfill}
+\newcommand{\insntab}{\tabto{3em}}
+
+\newcommand{\opsl}{<{}<}
+\newcommand{\opsr}{>{}>}
+\newcommand{\opxor}{\ensuremath{\oplus}}
+
+\newenvironment{mipsinsn}[3]{
+	\begin{minipage}[c]{10em}
+		\texttt{#1} \insntab \texttt{#2}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.5\linewidth}
+		\footnotesize #3
+	\end{minipage}
+}{
+}
+
+\begin{mipsinsn}{ADD}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} + \rt{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{ADDI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} + \imm{16}\mipss{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SUB}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} - \rt{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{LUI}{\rt{}, \imm{16}}{\rt{} = \imm{16} \opsl{} 16}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SLL}{\rd{}, \rt{}, \imm{5}}{\rd{} = \rt{} \opsl{} \imm{5}\mipsu{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SRL}{\rd{}, \rt{}, \imm{5}}{\rd{} = \rt{}\mipsu{} \opsr{} \imm{5}\mipsu{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{AND}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} \& \rt{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{ANDI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} \& \imm{16}\mipsu{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{OR}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} | \rt{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{ORI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} | \imm{16}\mipsu{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{NOR}{\rd{}, \rs{}, \rt{}}{\rd{} = \textasciitilde(\rs{} | \rt{})}
+\end{mipsinsn}
+
+\begin{mipsinsn}{XOR}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} \opxor{} \rt{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{XORI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} \opxor{} \imm{16}\mipsu{}}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs{} \textless{} \rt{})}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}}{\rt{} = (\rs{} \textless{} \imm{16}\mipss{})}
+\end{mipsinsn}
+
+\begin{mipsinsn}{BEQ}{\rs{}, \rt{}, \imm{16}}{
+		\textsc{if} \rs{} == \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
+	}
+\end{mipsinsn}
+
+\begin{mipsinsn}{BNE}{\rs{}, \rt{}, \imm{16}}{
+		\textsc{if} \rs{} != \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
+	}
+\end{mipsinsn}
+
+\begin{mipsinsn}{J}{\imm{26}}{
+		PC = PC\textsubscript{31:28} | (\imm{26} \opsl{} 2)
+	}
+\end{mipsinsn}
+
+\begin{mipsinsn}{LW}{\rt{}, \imm{16}(\rs{})}{\rt{} = Mem[\rs{} + \imm{16}\mipss{}]}
+\end{mipsinsn}
+
+\begin{mipsinsn}{SW}{\rt{}, \imm{16}(\rs{})}{Mem[\rs{} + \imm{16}\mipss{}] = \rt{}}
+\end{mipsinsn}
+
+\begin{itemize}
+	\footnotesize
+	\item[\textpm] signed operator or sign-extended
+	\item[\textzerooldstyle] unsigned operator or zero-extended
+\end{itemize}
