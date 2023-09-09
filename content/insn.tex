@@ -1,24 +1,22 @@
 
-\newcommand{\rd}{R\textsubscript{D}}
-\newcommand{\rt}{R\textsubscript{T}}
-\newcommand{\rs}{R\textsubscript{S}}
-\newcommand{\imm}[1]{C\textsubscript{#1}}
+\newcommand{\mipsrd}{R\textsubscript{D}}
+\newcommand{\mipsrt}{R\textsubscript{T}}
+\newcommand{\mipsrs}{R\textsubscript{S}}
+\newcommand{\mipsimm}[1]{{\scshape const}{#1}}
+\newcommand{\mipssha}[1]{{\scshape shift}{#1}}
+\newcommand{\mipsoff}[1]{{\scshape off}{#1}}
+\newcommand{\mipsadd}[1]{{\scshape addr}{#1}}
 
 \newcommand{\mipss}{\textsuperscript{\textpm}}
 \newcommand{\mipsu}{\textsuperscript{\textzerooldstyle}}
-
-% \newcommand{\mipsaddr}{C\textsubscript{26}\textsuperscript{$\varnothing$}}
-% \newcommand{\mipsshift}{C\textsubscript{5}\textsuperscript{$\varnothing$}}
-\newcommand{\floatright}{\newline\phantom{.}\hfill}
-\newcommand{\insntab}{\tabto{3em}}
 
 \newcommand{\opsl}{<{}<}
 \newcommand{\opsr}{>{}>}
 \newcommand{\opxor}{\ensuremath{\oplus}}
 
 \newenvironment{mipsinsn}[3]{
-	\begin{minipage}[c]{10em}
-		\texttt{#1} \insntab \texttt{#2}
+	\begin{minipage}[c]{0.28\linewidth}
+		{#1} \tabto{3em} {#2}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[c]{0.28\linewidth}
@@ -32,167 +30,167 @@
 	\end{minipage}
 }
 
-\begin{mipsinsn}{ADD}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} + \rt{}}
+\begin{mipsinsn}{ADD}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \mipsrs{} + \mipsrt{}}
 	\bitheader[endianness=big]{0,5,6,10,11,15,16,20,21,25,26,31} \\
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100000}
 \end{mipsinsn}
 
-\begin{mipsinsn}{ADDI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} + \imm{16}\mipss{}}
+\begin{mipsinsn}{ADDI}{\mipsrt{}, \mipsrs{}, \mipsimm{16}}{\mipsrt{} = \mipsrs{} + \mipsimm{16}\mipss{}}
 	\bitbox{6}{001000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SUB}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} - \rt{}}
+\begin{mipsinsn}{SUB}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \mipsrs{} - \mipsrt{}}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100010}
 \end{mipsinsn}
 
-\begin{mipsinsn}{LUI}{\rt{}, \imm{16}}{\rt{} = \imm{16} \opsl{} 16}
+\begin{mipsinsn}{LUI}{\mipsrt{}, \mipsimm{16}}{\mipsrt{} = \mipsimm{16} \opsl{} 16}
 	\bitbox{6}{001111} &
 	\bitbox{5}{00000} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLL}{\rd{}, \rt{}, \imm{5}}{\rd{} = \rt{} \opsl{} \imm{5}\mipsu{}}
+\begin{mipsinsn}{SLL}{\mipsrd{}, \mipsrt{}, \mipssha{5}}{\mipsrd{} = \mipsrt{} \opsl{} \mipssha{5}\mipsu{}}
 	\bitbox{6}{000000} &
 	\bitbox{5}{00000} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
-	\bitbox{5}{\imm{5}} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
+	\bitbox{5}{\mipssha{5}} &
 	\bitbox{6}{000000}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SRL}{\rd{}, \rt{}, \imm{5}}{\rd{} = \rt{}\mipsu{} \opsr{} \imm{5}\mipsu{}}
+\begin{mipsinsn}{SRL}{\mipsrd{}, \mipsrt{}, \mipssha{5}}{\mipsrd{} = \mipsrt{}\mipsu{} \opsr{} \mipssha{5}\mipsu{}}
 	\bitbox{6}{000000} &
 	\bitbox{5}{00000} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
-	\bitbox{5}{\imm{5}} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
+	\bitbox{5}{\mipssha{5}} &
 	\bitbox{6}{000010}
 \end{mipsinsn}
 
-\begin{mipsinsn}{AND}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} \& \rt{}}
+\begin{mipsinsn}{AND}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \mipsrs{} \& \mipsrt{}}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100100}
 \end{mipsinsn}
 
-\begin{mipsinsn}{ANDI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} \& \imm{16}\mipsu{}}
+\begin{mipsinsn}{ANDI}{\mipsrt{}, \mipsrs{}, \mipsimm{16}}{\mipsrt{} = \mipsrs{} \& \mipsimm{16}\mipsu{}}
 	\bitbox{6}{001100} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{OR}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} | \rt{}}
+\begin{mipsinsn}{OR}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \mipsrs{} | \mipsrt{}}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100101}
 \end{mipsinsn}
 
-\begin{mipsinsn}{ORI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} | \imm{16}\mipsu{}}
+\begin{mipsinsn}{ORI}{\mipsrt{}, \mipsrs{}, \mipsimm{16}}{\mipsrt{} = \mipsrs{} | \mipsimm{16}\mipsu{}}
 	\bitbox{6}{001101} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{NOR}{\rd{}, \rs{}, \rt{}}{\rd{} = \textasciitilde(\rs{} | \rt{})}
+\begin{mipsinsn}{NOR}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \textasciitilde(\mipsrs{} | \mipsrt{})}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100111}
 \end{mipsinsn}
 
-\begin{mipsinsn}{XOR}{\rd{}, \rs{}, \rt{}}{\rd{} = \rs{} \opxor{} \rt{}}
+\begin{mipsinsn}{XOR}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = \mipsrs{} \opxor{} \mipsrt{}}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{100110}
 \end{mipsinsn}
 
-\begin{mipsinsn}{XORI}{\rt{}, \rs{}, \imm{16}}{\rt{} = \rs{} \opxor{} \imm{16}\mipsu{}}
+\begin{mipsinsn}{XORI}{\mipsrt{}, \mipsrs{}, \mipsimm{16}}{\mipsrt{} = \mipsrs{} \opxor{} \mipsimm{16}\mipsu{}}
 	\bitbox{6}{001110} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLT}{\rd{}, \rs{}, \rt{}}{\rd{} = (\rs\mipss{} \textless{} \rt\mipss{}) ? 1 : 0}
+\begin{mipsinsn}{SLT}{\mipsrd{}, \mipsrs{}, \mipsrt{}}{\mipsrd{} = (\mipsrs\mipss{} \textless{} \mipsrt\mipss{}) ? 1 : 0}
 	\bitbox{6}{000000} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{5}{\rd} &
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{5}{\mipsrd} &
 	\bitbox{5}{00000} &
 	\bitbox{6}{101010}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SLTI}{\rt{}, \rs{}, \imm{16}}{\rt{} = (\rs\mipss{} \textless{} \imm{16}\mipss{}) ? 1 : 0}
+\begin{mipsinsn}{SLTI}{\mipsrt{}, \mipsrs{}, \mipsimm{16}}{\mipsrt{} = (\mipsrs\mipss{} \textless{} \mipsimm{16}\mipss{}) ? 1 : 0}
 	\bitbox{6}{001010} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsimm{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{BEQ}{\rs{}, \rt{}, \imm{16}}{
-		\textsc{if} \rs{} == \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
+\begin{mipsinsn}{BEQ}{\mipsrs{}, \mipsrt{}, \mipsoff{16}}{
+		\textsc{if} \mipsrs{} == \mipsrt{}, PC += \mipsoff{16}\mipss{} \opsl{} 2
 	}
 	\bitbox{6}{000100} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsoff{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{BNE}{\rs{}, \rt{}, \imm{16}}{
-		\textsc{if} \rs{} != \rt{}, PC += \imm{16}\mipss{} \opsl{} 2
+\begin{mipsinsn}{BNE}{\mipsrs{}, \mipsrt{}, \mipsoff{16}}{
+		\textsc{if} \mipsrs{} != \mipsrt{}, PC += \mipsoff{16}\mipss{} \opsl{} 2
 	}
 	\bitbox{6}{000101} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsoff{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{J}{\imm{26}}{
-		PC = PC\textsubscript{31:28} | (\imm{26} \opsl{} 2)
+\begin{mipsinsn}{J}{\mipsadd{26}}{
+		PC = PC\textsubscript{31:28} | (\mipsadd{26} \opsl{} 2)
 	}
 	\bitbox{6}{000010} &
-	\bitbox{26}{\imm{26}}
+	\bitbox{26}{\mipsadd{26}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{LW}{\rt{}, \imm{16}(\rs{})}{\rt{} = Mem\textsubscript{32}(\rs{} + \imm{16}\mipss{})}
+\begin{mipsinsn}{LW}{\mipsrt{}, \mipsoff{16}(\mipsrs{})}{\mipsrt{} = Mem\textsubscript{32}(\mipsrs{} + \mipsoff{16}\mipss{})}
 	\bitbox{6}{100011} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsoff{16}}
 \end{mipsinsn}
 
-\begin{mipsinsn}{SW}{\rt{}, \imm{16}(\rs{})}{Mem\textsubscript{32}(\rs{} + \imm{16}\mipss{}) = \rt{}}
+\begin{mipsinsn}{SW}{\mipsrt{}, \mipsoff{16}(\mipsrs{})}{Mem\textsubscript{32}(\mipsrs{} + \mipsoff{16}\mipss{}) = \mipsrt{}}
 	\bitbox{6}{101011} &
-	\bitbox{5}{\rs} &
-	\bitbox{5}{\rt} &
-	\bitbox{16}{\imm{16}}
+	\bitbox{5}{\mipsrs} &
+	\bitbox{5}{\mipsrt} &
+	\bitbox{16}{\mipsoff{16}}
 \end{mipsinsn}
 
 \begin{itemize}
