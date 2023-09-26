@@ -102,12 +102,12 @@
         \newcolumntype{M}{>{\tt}c}
         \begin{tabularx}{\textwidth}{lMl}
             \toprule
-            \multicolumn{1}{c}{\textsc{Name}} & \multicolumn{1}{c}{\textsc{Mnemonic}} & \multicolumn{1}{c}{\textsc{Operation}} \\
+            \multicolumn{2}{c}{\textsc{Name, Mnemonic}} & \multicolumn{1}{c}{\textsc{Operation}} \\
             \midrule
-            Branch Less Than                  & blt                                   & if(R[rs]<R[rt]) PC = Label             \\
-            Branch Greater Than               & bgt                                   & if(R[rs]>R[rt]) PC = Label             \\
-            Branch Less Than or Equal         & ble                                   & if(R[rs]<=R[rt]) PC = Label            \\
-            Branch Greater Than or Equal      & bge                                   & if(R[rs]>=R[rt]) PC = Label            \\
+            Branch Less Than                  & blt                                   & if(R[rs] < R[rt]) PC = Label             \\
+            Branch Greater Than               & bgt                                   & if(R[rs] > R[rt]) PC = Label             \\
+            Branch Less Than or Equal         & ble                                   & if(R[rs] <= R[rt]) PC = Label            \\
+            Branch Greater Than or Equal      & bge                                   & if(R[rs] >= R[rt]) PC = Label            \\
             Load Immediate                    & li                                    & R[rd] = immediate                      \\
             Move                              & move                                  & R[rd] = R[rs]                          \\
             \bottomrule

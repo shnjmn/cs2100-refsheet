@@ -25,7 +25,7 @@
     Or Imm.                                             & ori                                      & I & R[rt] = R[rs] | ZeroExtImm                                       \footnotemark[3]                 & 0x0d   \\
     Exclusive-Or                                        & xor                                      & R & R[rd] = R[rs] \textasciicircum{} R[rt]                                                            & 0/0x26 \\
     Exclusive-Or Imm.                                   & xori                                     & I & R[rt] = R[rs] \textasciicircum{} ZeroExtImm                      \footnotemark[3]                 & 0x0e   \\
-    Nor                                                 & nor                                      & R & R[rd] = ~ (R[rs] | R[rt])                                                                         & 0/0x27 \\
+    Nor                                                 & nor                                      & R & R[rd] = \textasciitilde (R[rs] | R[rt])                                                           & 0/0x27 \\
     Load Upper Imm.                                     & lui                                      & I & R[rt] = \{imm, 16'b0\}                                                                            & 0x0f   \\
     \midrule
     Set Less Than                                       & slt                                      & R & R[rd] = (R[rs] < R[rt]) ? 1 : 0                                                                   & 0/0x2a \\
@@ -33,8 +33,8 @@
     Set Less Than Imm.                                  & slti                                     & I & R[rt] = (R[rs] < SignExtImm) ? 1 : 0                             \footnotemark[2]                 & 0x0a   \\
     Set Less Than Imm. Unsigned                         & sltiu                                    & I & R[rt] = (R[rs] < SignExtImm) ? 1 : 0                             \footnotemark[2]\footnotemark[6] & 0x0b   \\
     \midrule
-    Jump                                                & j                                        & J & PC=JumpAddr                                                      \footnotemark[5]                 & 0x02   \\
-    Jump And Link                                       & jal                                      & J & R[31]=PC+8; PC=JumpAddr                                          \footnotemark[5]                 & 0x03   \\
+    Jump                                                & j                                        & J & PC = JumpAddr                                                      \footnotemark[5]               & 0x02   \\
+    Jump And Link                                       & jal                                      & J & R[31] = PC + 8; PC = JumpAddr                                          \footnotemark[5]           & 0x03   \\
     Branch On Equal                                     & beq                                      & I & if(R[rs] == R[rt]) PC = PC + 4 + BranchAddr                      \footnotemark[4]                 & 0x04   \\
     Branch On Not Equal                                 & bne                                      & I & if(R[rs] != R[rt]) PC = PC + 4 + BranchAddr                      \footnotemark[4]                 & 0x05   \\
     Jump Register                                       & jr                                       & R & PC=R[rs]                                                                                          & 0/0x08 \\
