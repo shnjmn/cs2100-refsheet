@@ -2,13 +2,14 @@
 \hyphenation{Unsigned}
 \renewcommand{\thefootnote}{\alph{footnote}}
 \newcolumntype{O}{>{\centering\arraybackslash}c}
-\newcolumntype{N}{>{\raggedright\arraybackslash\hangindent=4ex}p{15em}}
+\newcolumntype{N}{>{\raggedright\arraybackslash\hangindent=4ex}p{14em}}
 \newcolumntype{M}{>{\tt}l}
 \newcolumntype{D}{>{\raggedright\arraybackslash\hangindent=4ex}X}
 
 \begin{tabularx}{\textwidth}{NMcDcO}
     \toprule
-    \multicolumn{3}{c}{\textsc{Name, Mnemonic, Format}} & \multicolumn{1}{c}{\textsc{Description}} &   & \textsc{Opcode/Funct}                                                                               \\
+    \multicolumn{3}{c}{\textsc{Name, Mnemonic, Format}} & \multicolumn{1}{c}{\textsc{Description}} &  
+    \multicolumn{2}{r}{\textsc{Opcode/Funct}}                                                                               \\
     \midrule
     Add                                                 & add                                      & R & R[rd] = R[rs] + R[rt]                                   & \footnotemark[1]                 & 0/0x20 \\
     Add Unsigned                                        & addu                                     & R & R[rd] = R[rs] + R[rt]                                   &                                  & 0/0x21 \\
@@ -52,7 +53,7 @@
 
 \begin{minipage}[t]{\linewidth-4em}
     \begin{multicols}{2}
-        \footnotesize
+        \small
         \footnotemark[1]{May cause overflow exception}    \\
         \footnotemark[2]{SignExtImm = \{16\{immediate[15]\}, immediate\}} \\
         \footnotemark[3]{ZeroExtImm = \{16\{1b'0\}, immediate\}}    \\

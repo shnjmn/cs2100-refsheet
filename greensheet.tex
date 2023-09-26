@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 
-\usepackage[a3paper, margin=0.8cm, headheight=15pt]{geometry}
+\usepackage[a3paper, left=15mm,right=10mm, top=8mm, bottom=8mm,headheight=15pt]{geometry}
 \usepackage{pgfpages}
 \pgfpagesuselayout{resize to}[a4paper]
 
@@ -20,7 +20,7 @@
 \usepackage{bytefield}
 
 \usepackage{titlesec}
-\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{\vspace{1ex}}
+\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{\vspace{0.5ex}}
 
 % \usepackage{caption}
 % \usepackage{graphicx}
@@ -53,8 +53,6 @@
         \section*{Core Instruction Set}
         \input{content/coreinsn.tex}
     \end{minipage}
-
-
 
     \begin{minipage}[t]{0.4 \linewidth}
         \section*{Basic Instruction Formats}
