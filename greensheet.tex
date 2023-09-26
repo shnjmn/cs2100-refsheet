@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 
-\usepackage[a3paper, left=15mm,right=10mm, top=8mm, bottom=8mm,headheight=15pt]{geometry}
+\usepackage[a3paper, left=15mm,right=10mm, top=8mm, bottom=8mm, headheight=10pt]{geometry}
 \usepackage{pgfpages}
 \pgfpagesuselayout{resize to}[a4paper]
 
@@ -47,6 +47,10 @@
 \begin{document}
 
 \thispagestyle{empty}
+
+\textbf{\Huge MIPS Reference Sheet}
+
+\vfill
 
 \begin{minipage}[t]{0.68\linewidth}
     \begin{minipage}[t]{\linewidth}
@@ -149,7 +153,6 @@
 
     \begin{minipage}[t]{\linewidth}
         \section*{IEEE 754 Floating Point Standard}
-
         $$
             (-1)^S \times M \times 2^{E-B}
         $$
@@ -179,7 +182,6 @@
 
     \begin{minipage}[t]{\linewidth}
         \section*{Data Alignment}
-
         \begin{center}
             \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
                 \bitheader[endianness=big]{0,3,4,7,8,11,12,15,16,19,20,23,24,27,28,31} \\
@@ -203,11 +205,38 @@
     \end{minipage}
 \end{minipage}
 
+\vfill
 
 \clearpage
 
-% Please add the following required packages to your document preamble:
-\begin{table}[]
+\phantom{.}
+\vfill
+
+\begin{minipage}[t]{0.36\linewidth}
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+                 & R-type      & LW          & SW          & BEQ         \\
+        \midrule
+        RegDst   & \texttt{1}  & \texttt{0}  & \texttt{X}  & \texttt{X}  \\
+        ALUSrc   & \texttt{0}  & \texttt{1}  & \texttt{1}  & \texttt{0}  \\
+        MemToReg & \texttt{0}  & \texttt{1}  & \texttt{X}  & \texttt{X}  \\
+        RegWrite & \texttt{1}  & \texttt{1}  & \texttt{0}  & \texttt{0}  \\
+        MemRead  & \texttt{0}  & \texttt{1}  & \texttt{0}  & \texttt{0}  \\
+        MemWrite & \texttt{0}  & \texttt{0}  & \texttt{1}  & \texttt{0}  \\
+        Branch   & \texttt{0}  & \texttt{0}  & \texttt{0}  & \texttt{1}  \\
+        ALUop    & \texttt{10} & \texttt{00} & \texttt{00} & \texttt{01} \\
+        \bottomrule
+    \end{tabular}
+\end{minipage}
+\begin{minipage}{0.6\linewidth}
+    \includegraphics{content/fig417.pdf}
+\end{minipage}
+
+\vfill
+
+\begin{minipage}{0.6\linewidth}
+    \centering
     \begin{tabular}{cccccc}
         \toprule
         Opcode & ALUOp       & Operation        & Funct           & ALU action       & ALU control   \\
@@ -222,22 +251,12 @@
         R-type & \texttt{10} & set-on-less-than & \texttt{101010} & set-on-less-than & \texttt{0111} \\
         \bottomrule
     \end{tabular}
-\end{table}
+\end{minipage}
+\hfill
+\begin{minipage}{0.36\linewidth}
+    \includegraphics[scale=0.8]{content/alu.pdf}
+\end{minipage}
 
-\begin{tabular}{ccccccccc}
-    \toprule
-           & RegDst     & ALUSrc     & MemToReg   & RegWrite   & MemRead    & MemWrite   & Branch     & ALUop       \\
-    \midrule
-    lw     & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{00} \\
-    sw     & \texttt{X} & \texttt{1} & \texttt{X} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{00} \\
-    beq    & \texttt{X} & \texttt{0} & \texttt{X} & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{01} \\
-    R-type & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{10} \\
-    \bottomrule
-\end{tabular}
-
-\begin{center}
-    \includegraphics{content/fig417.pdf}
-\end{center}
-
+\vfill
 
 \end{document}
