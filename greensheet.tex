@@ -1,0 +1,243 @@
+\documentclass[10pt]{article}
+
+\usepackage[a3paper, margin=0.8cm, headheight=15pt]{geometry}
+\usepackage{pgfpages}
+\pgfpagesuselayout{resize to}[a4paper]
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,lining,scaled=.96]{FiraSans}
+\usepackage[lining,scaled=.96]{FiraMono}
+\usepackage{concmath}
+
+\usepackage{amssymb}
+\usepackage{tabularx,booktabs}
+
+\usepackage{fancyvrb}
+\VerbatimFootnotes
+
+\usepackage{bytefield}
+
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{\vspace{1ex}}
+
+% \usepackage{caption}
+% \usepackage{graphicx}
+\usepackage{multicol}
+% \usepackage{subcaption}
+\usepackage{tabto}
+% \usepackage{textcomp}
+\usepackage{grid-system}
+
+
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usepackage[american]{circuitikz}
+\ctikzset{
+    logic ports=ieee,
+    logic ports/scale=0.7,
+}
+
+\usepackage{enumitem}
+\setlist{nosep}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{minipage}[t]{0.68\linewidth}
+    \begin{minipage}[t]{\linewidth}
+        \section*{Core Instruction Set}
+        \input{content/coreinsn.tex}
+    \end{minipage}
+
+
+
+    \begin{minipage}[t]{0.4 \linewidth}
+        \section*{Basic Instruction Formats}
+
+        \phantom{.}\hfill
+        R
+        \quad
+        \begin{bytefield}[boxformatting=\centering\small,bitwidth=0.028\linewidth,bitheight=1.5em]{32}
+            \bitheader[endianness=big]{0,5,6,10,11,15,16,20,21,25,26,31} \\
+            \bitbox{6}{opcode} &
+            \bitbox{5}{rs} &
+            \bitbox{5}{rt} &
+            \bitbox{5}{rd} &
+            \bitbox{5}{shamt} &
+            \bitbox{6}{funct}
+        \end{bytefield}
+
+        \vspace{1em}
+        \phantom{.}\hfill
+        I
+        \quad
+        \begin{bytefield}[boxformatting=\centering\small,bitwidth=0.028\linewidth,bitheight=1.5em]{32}
+            \bitheader[endianness=big]{0,15,16,20,21,25,26,31} \\
+            \bitbox{6}{opcode} &
+            \bitbox{5}{rs} &
+            \bitbox{5}{rt} &
+            \bitbox{16}{immediate}
+        \end{bytefield}
+
+        \vspace{1em}
+        \phantom{.}\hfill
+        J
+        \quad
+        \begin{bytefield}[boxformatting=\centering\small,bitwidth=0.028\linewidth,bitheight=1.5em]{32}
+            \bitheader[endianness=big]{0,25,26,31} \\
+            \bitbox{6}{opcode} &
+            \bitbox{26}{address}
+        \end{bytefield}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.58\linewidth}
+        \section*{Pseudoinstruction Set}
+        \newcolumntype{M}{>{\tt}c}
+        \begin{tabularx}{\textwidth}{lMl}
+            \toprule
+            \multicolumn{1}{c}{\textsc{Name}} & \multicolumn{1}{c}{\textsc{Mnemonic}} & \multicolumn{1}{c}{\textsc{Operation}} \\
+            \midrule
+            Branch Less Than                  & blt                                   & if(R[rs]<R[rt]) PC = Label             \\
+            Branch Greater Than               & bgt                                   & if(R[rs]>R[rt]) PC = Label             \\
+            Branch Less Than or Equal         & ble                                   & if(R[rs]<=R[rt]) PC = Label            \\
+            Branch Greater Than or Equal      & bge                                   & if(R[rs]>=R[rt]) PC = Label            \\
+            Load Immediate                    & li                                    & R[rd] = immediate                      \\
+            Move                              & move                                  & R[rd] = R[rs]                          \\
+            \bottomrule
+        \end{tabularx}
+    \end{minipage}
+
+    \begin{minipage}[t]{\linewidth}
+        \section*{REGISTER NAME, NUMBER, USE, CALL CONVENTION}
+        \newcolumntype{U}{>{\raggedright\arraybackslash\hangindent=4ex}X}
+        \newcolumntype{P}{>{\centering\arraybackslash}p{8em}}
+        \begin{tabularx}{\textwidth}{ccUP}
+            \toprule
+            \textsc{Name} & \textsc{Number} & \multicolumn{1}{c}{\textsc{Use}}                       & \textsc{Preserved \newline across a call?} \\
+            \midrule
+            \$zero        & 0               & The Constant Value 0                                   & N.A.                                       \\
+            \$at          & 1               & Assembler Temporary                                    & No                                         \\
+            \$v0-\$v1     & 2-3             & Values for Function  Results and Expression Evaluation & No                                         \\
+            \$a0-\$a3     & 4-7             & Arguments                                              & No                                         \\
+            \$t0-\$t7     & 8-15            & Temporaries                                            & No                                         \\
+            \$s0-\$s7     & 16-23           & Saved Temporaries                                      & Yes                                        \\
+            \$t8-\$t9     & 24-25           & Temporaries                                            & No                                         \\
+            \$k0-\$k1     & 26-27           & Reserved for OS Kernel                                 & No                                         \\
+            \$gp          & 28              & Global Pointer                                         & Yes                                        \\
+            \$sp          & 29              & Stack Pointer                                          & Yes                                        \\
+            \$fp          & 30              & Frame Pointer                                          & Yes                                        \\
+            \$ra          & 31              & Return Address                                         & Yes                                        \\
+            \bottomrule
+        \end{tabularx}
+    \end{minipage}
+
+    \begin{minipage}[t]{\linewidth}
+        \section*{Truth Tables}
+        \input{content/logic-gates.gs.tex}
+    \end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\linewidth}
+    \begin{minipage}[t]{\linewidth}
+        \section*{Base Convention, ASCII Symbols}
+        \centering
+        \input{content/ascii.tex}
+    \end{minipage}
+
+    \begin{minipage}[t]{\linewidth}
+        \section*{IEEE 754 Floating Point Standard}
+
+        $$
+            (-1)^S \times M \times 2^{E-B}
+        $$
+
+        Single Precision Format (Bias = 127) \vspace{1ex}
+        \begin{center}
+            \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+                \bitheader[endianness=big]{0,22,23,30,31} \\
+                \bitbox{1}{S} &
+                \bitbox{8}{Exponent} &
+                \bitbox{23}{Mantissa}
+            \end{bytefield}
+        \end{center}
+
+        Double Precision Format (Bias = 1023)
+        \begin{center}
+            \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+                \bitheader[lsb=32,endianness=big]{32,51,52,62,63} \\
+                \bitbox{1}{S} &
+                \bitbox{11}{Exponent} &
+                \bitbox{20}{Mantissa[51:32]} \\
+                \bitheader[endianness=big]{0,31} \\
+                \bitbox{32}{Mantissa[31:0]}
+            \end{bytefield}
+        \end{center}
+    \end{minipage}
+
+    \begin{minipage}[t]{\linewidth}
+        \section*{Data Alignment}
+
+        \begin{center}
+            \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+                \bitheader[endianness=big]{0,3,4,7,8,11,12,15,16,19,20,23,24,27,28,31} \\
+                \bitbox{32}{Doubleword} \\
+                \bitbox{16}{Word} &
+                \bitbox{16}{Word} \\
+                \bitbox{8}{Halfword} &
+                \bitbox{8}{Halfword} &
+                \bitbox{8}{Halfword} &
+                \bitbox{8}{Halfword} \\
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte} &
+                \bitbox{4}{Byte}
+            \end{bytefield}
+        \end{center}
+    \end{minipage}
+\end{minipage}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{minipage}[t]{0.3\linewidth}
+%     \section*{Nibble}
+%     \centering
+%     \input{content/number-system.tex}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.68\linewidth}
+
+% \end{minipage}
+
+% \vfill
+
+\end{document}
