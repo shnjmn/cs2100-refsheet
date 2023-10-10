@@ -43,9 +43,9 @@
 
 \textbf{\Huge MIPS Reference Sheet}
 
-% \vfill
+\vspace{1em}
 
-\begin{minipage}[t][\textheight-3cm][s]{0.68\linewidth}
+\begin{minipage}[t]{0.68\linewidth}
     \input{content/coreinsn.tex}
 
     \input{content/register.tex}
@@ -107,32 +107,13 @@
     \end{minipage}
 \end{minipage}
 
-\begin{minipage}[t]{0.24\linewidth}
+\vspace{1ex}
 
+\begin{minipage}[t]{0.24\linewidth}
     \input{content/k-map.tex}
 \end{minipage}
-
-\begin{minipage}[t]{0.5\linewidth}
-    \section*{Laws of Boolean Algebra}
-    \begin{tabular}{lll}
-        \toprule
-        \textbf{Name}           & \textbf{AND}                                                  & \textbf{OR}                                  \\
-        \midrule
-        Identity Laws           & $x \cdot 1 = x$                                               & $x + 0 = x$                                  \\
-        Inverse/Complement Laws & $x \cdot x' = 0$                                              & $x + x' = 1$                                 \\
-        Commutative Laws        & $x \cdot y = y \cdot x$                                       & $x + y = y + x$                              \\
-        Associative Laws        & $x \cdot (y \cdot z) = (x \cdot y) \cdot z$                   & $x + (y + z) = (x + y) + z$                  \\
-        Distributive Laws       & $x \cdot (y + z) = x \cdot y + x \cdot z$                     & $x + y \cdot z = (x + y) \cdot (x + z)$      \\
-        \midrule
-        Idempotency             & $x \cdot x = x$                                               & $x + x = x$                                  \\
-        Zero/One Element        & $x \cdot 0 = 0$                                               & $x + 1 = 1$                                  \\
-        Involution              & $(x')' = x$                                                   &                                              \\
-        Absorption 1            & $x + x \cdot y = x$                                           & $x \cdot (x + y) = x$                        \\
-        Absorption 2            & $x + x' \cdot y = x + y$                                      & $x \cdot (x' + y) = x \cdot y$               \\
-        DeMorgan's Law          & $(x \cdot y)' = x' + y'$                                      & $(x + y)' = x' \cdot y'$                     \\
-        Consensus               & $x \cdot y + x' \cdot z + y \cdot z = x \cdot y + x' \cdot z$ & $x + y \cdot z + x' \cdot z = x + y \cdot z$ \\
-        \bottomrule
-    \end{tabular}
+\begin{minipage}[t]{0.72\linewidth}
+    \input{content/boolean-algebra.tex}
 \end{minipage}
 
 \end{document}
