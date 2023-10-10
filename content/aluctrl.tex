@@ -1,0 +1,29 @@
+\centering
+% \begin{tabular}{clcc}
+%     \toprule
+%     Operation & Opcode/Funct                & ALU Action & ALUOp/ALUCtrl             \\
+%     \midrule
+%     LW        & \texttt{0x23}               & add        & \texttt{00}/\texttt{0010} \\
+%     SW        & \texttt{0x2b}               & add        & \texttt{00}/\texttt{0010} \\
+%     BEQ       & \texttt{0x04}               & sub        & \texttt{01}/\texttt{0110} \\
+%     ADD       & \texttt{0x00}/\texttt{0x20} & add        & \texttt{10}/\texttt{0010} \\
+%     SUB       & \texttt{0x00}/\texttt{0x22} & sub        & \texttt{10}/\texttt{0110} \\
+%     AND       & \texttt{0x00}/\texttt{0x24} & and        & \texttt{10}/\texttt{0000} \\
+%     OR        & \texttt{0x00}/\texttt{0x25} & or         & \texttt{10}/\texttt{0001} \\
+%     SLT       & \texttt{0x00}/\texttt{0x2a} & slt        & \texttt{10}/\texttt{0111} \\
+%     \bottomrule
+% \end{tabular}
+\begin{tabular}[t]{cccccc}
+    \toprule
+    Opcode & ALUOp       & Operation        & Funct           & ALU action       & ALU control   \\
+    \midrule
+    LW     & \texttt{00} & load word        & \texttt{XXXXXX} & add              & \texttt{0010} \\
+    SW     & \texttt{00} & store word       & \texttt{XXXXXX} & add              & \texttt{0010} \\
+    BEQ    & \texttt{01} & branch equal     & \texttt{XXXXXX} & subtract         & \texttt{0110} \\
+    R-type & \texttt{10} & add              & \texttt{100000} & add              & \texttt{0010} \\
+    R-type & \texttt{10} & subtract         & \texttt{100010} & subtract         & \texttt{0110} \\
+    R-type & \texttt{10} & AND              & \texttt{100100} & AND              & \texttt{0000} \\
+    R-type & \texttt{10} & OR               & \texttt{100101} & OR               & \texttt{0001} \\
+    R-type & \texttt{10} & set-on-less-than & \texttt{101010} & set-on-less-than & \texttt{0111} \\
+    \bottomrule
+\end{tabular}

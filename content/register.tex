@@ -1,0 +1,20 @@
+\section*{Register Name, Number, Use, Call Convention}
+\newcolumntype{U}{>{\raggedright\arraybackslash\hangindent=4ex}X}
+\begin{tabularx}{\textwidth}{llUc}
+    \toprule
+    \textsc{Name}  & \textsc{Number} & \multicolumn{1}{c}{\textsc{Use}}                      & \textsc{Preserved on Call?} \\
+    \midrule
+    \verb|$zero|   & 0               & The constant value 0                                  & N.A.                \\
+    \verb|$at|     & 1               & Assembler temporary                                   & No                  \\
+    \verb|$v0-$v1| & 2-3             & Values for function results and expression evaluation & No                  \\
+    \verb|$a0-$a3| & 4-7             & Arguments                                             & No                  \\
+    \verb|$t0-$t7| & 8-15            & Temporaries                                           & No                  \\
+    \verb|$s0-$s7| & 16-23           & Saved temporaries                                     & Yes                 \\
+    \verb|$t8-$t9| & 24-25           & Temporaries                                           & No                  \\
+    \verb|$k0-$k1| & 26-27           & Reserved for os kernel                                & No                  \\
+    \verb|$gp|     & 28              & Global pointer                                        & Yes                 \\
+    \verb|$sp|     & 29              & Stack pointer                                         & Yes                 \\
+    \verb|$fp|     & 30              & Frame pointer                                         & Yes                 \\
+    \verb|$ra|     & 31              & Return address                                        & Yes                 \\
+    \bottomrule
+\end{tabularx}

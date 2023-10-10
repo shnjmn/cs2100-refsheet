@@ -1,0 +1,15 @@
+\centering
+\begin{tabular}[t]{ccccc}
+    \toprule
+             & R-type      & LW          & SW          & BEQ         \\
+    \midrule
+    RegDst   & \texttt{1}  & \texttt{0}  & \texttt{X}  & \texttt{X}  \\
+    ALUSrc   & \texttt{0}  & \texttt{1}  & \texttt{1}  & \texttt{0}  \\
+    MemToReg & \texttt{0}  & \texttt{1}  & \texttt{X}  & \texttt{X}  \\
+    RegWrite & \texttt{1}  & \texttt{1}  & \texttt{0}  & \texttt{0}  \\
+    MemRead  & \texttt{0}  & \texttt{1}  & \texttt{0}  & \texttt{0}  \\
+    MemWrite & \texttt{0}  & \texttt{0}  & \texttt{1}  & \texttt{0}  \\
+    Branch   & \texttt{0}  & \texttt{0}  & \texttt{0}  & \texttt{1}  \\
+    ALUop    & \texttt{10} & \texttt{00} & \texttt{00} & \texttt{01} \\
+    \bottomrule
+\end{tabular}

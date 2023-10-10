@@ -1,0 +1,26 @@
+\section*{IEEE 754 Floating Point Standard}
+$$
+    (-1)^S \times M \times 2^{E-B}
+$$
+
+Single Precision Format (Bias = 127) \vspace{1ex}
+\begin{center}
+    \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+        \bitheader[endianness=big]{0,22,23,30,31} \\
+        \bitbox{1}{S} &
+        \bitbox{8}{Exponent} &
+        \bitbox{23}{Mantissa}
+    \end{bytefield}
+\end{center}
+
+Double Precision Format (Bias = 1023)
+\begin{center}
+    \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+        \bitheader[lsb=32,endianness=big]{32,51,52,62,63} \\
+        \bitbox{1}{S} &
+        \bitbox{11}{Exponent} &
+        \bitbox{20}{Mantissa[51:32]} \\
+        \bitheader[endianness=big]{0,31} \\
+        \bitbox{32}{Mantissa[31:0]}
+    \end{bytefield}
+\end{center}

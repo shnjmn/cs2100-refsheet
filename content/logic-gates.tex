@@ -34,6 +34,16 @@
 		\end{circuitikz}
 		\vspace{1ex}
 	\end{Cell}
+	\begin{Cell}{1}
+		\subsection*{NOT}
+		\centering
+		\begin{circuitikz}[]
+			\draw (0,0) node[not port](G){};
+			\draw (G.in) node[anchor=east]{$a$};
+			\draw (G.out) node[anchor=west]{$\overline{a}$};
+		\end{circuitikz}
+		\vspace{1ex}
+	\end{Cell}
 \end{Row}
 
 \begin{Row}
@@ -79,6 +89,18 @@
 		\end{tabular}
 		\vspace{1ex}
 	\end{Cell}
+	\begin{Cell}{1}
+		\centering
+		\begin{tabular}{c|c}
+			\toprule
+			$a$ & $\overline{a}$ \\
+			\midrule
+			$0$ & $1$            \\
+			$1$ & $0$            \\
+			\bottomrule
+		\end{tabular}
+		\vspace{1ex}
+	\end{Cell}
 \end{Row}
 \begin{Row}
 	\begin{Cell}{1}
@@ -113,6 +135,9 @@
 			\draw (G.out) node[anchor=west]{$\overline{a \oplus b}$};
 		\end{circuitikz}
 		\vspace{1ex}
+	\end{Cell}
+	\begin{Cell}{1}
+		\phantom{x}
 	\end{Cell}
 \end{Row}
 \begin{Row}
@@ -157,42 +182,6 @@
 			\bottomrule
 		\end{tabular}
 		\vspace{1ex}
-	\end{Cell}
-\end{Row}
-
-\begin{Row}
-	\begin{Cell}{1}
-		\subsection*{NOT}
-		\centering
-		\begin{circuitikz}[]
-			\draw (0,0) node[not port](G){};
-			\draw (G.in) node[anchor=east]{$a$};
-			\draw (G.out) node[anchor=west]{$\overline{a}$};
-		\end{circuitikz}
-		\vspace{1ex}
-	\end{Cell}
-	\begin{Cell}{1}
-		\phantom{x}
-	\end{Cell}
-	\begin{Cell}{1}
-		\phantom{x}
-	\end{Cell}
-\end{Row}
-\begin{Row}
-	\begin{Cell}{1}
-		\centering
-		\begin{tabular}{c|c}
-			\toprule
-			$a$ & $\overline{a}$ \\
-			\midrule
-			$0$ & $1$            \\
-			$1$ & $0$            \\
-			\bottomrule
-		\end{tabular}
-		\vspace{1ex}
-	\end{Cell}
-	\begin{Cell}{1}
-		\phantom{x}
 	\end{Cell}
 	\begin{Cell}{1}
 		\phantom{x}
