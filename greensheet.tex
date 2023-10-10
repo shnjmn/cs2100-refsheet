@@ -17,9 +17,9 @@
 
 \usepackage{fancyvrb}
 
-
 \usepackage{titlesec}
-\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{\vspace{0.5ex}}
+\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1ex}{}
+\titlespacing{\section}{0pt}{1ex}{0pt}
 
 \usepackage{multicol}
 \usepackage{tabto}
@@ -46,48 +46,19 @@
 % \vfill
 
 \begin{minipage}[t]{0.68\linewidth}
-    \begin{minipage}[t]{\linewidth}
-        \section*{Core Instruction Set}
-        \input{content/coreinsn.tex}
-    \end{minipage}
+    \input{content/coreinsn.tex}
 
-    \begin{minipage}[t]{\linewidth}
-        \input{content/register.tex}
-    \end{minipage}
-    % \begin{minipage}[t]{0.56\linewidth}
-    %     \input{content/pseudoinsn.tex}
-    % \end{minipage}
-    % \hfill
-    % \begin{minipage}[t]{0.4\linewidth}
-    %     \begin{minipage}[t]{\linewidth}
-    %         \input{content/insn-format.tex}
-    %     \end{minipage}
-    %     \begin{minipage}[t]{\linewidth}
-    %         \input{content/pseudoinsn.tex}
-    %     \end{minipage}
-    % \end{minipage}
+    \input{content/register.tex}
 
-    \begin{minipage}[t]{\linewidth}
-        \section*{Truth Tables}
-        \input{content/logic-gates.tex}
-    \end{minipage}
-
+    \input{content/logic-gates.tex}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.3\linewidth}
-    \begin{minipage}[t]{\linewidth}
-        \input{content/insn-format.tex}
-    \end{minipage}
+    \input{content/insn-format.tex}
 
-    \begin{minipage}[t]{\linewidth}
-        \section*{Base Convention, ASCII Symbols}
-        \centering
-        \input{content/ascii.tex}
-    \end{minipage}
+    \input{content/ieee754.tex}
 
-    \begin{minipage}[t]{\linewidth}
-        \input{content/ieee754.tex}
-    \end{minipage}
+    \input{content/ascii.tex}
 \end{minipage}
 
 \vfill
@@ -96,19 +67,14 @@
 
 
 \begin{minipage}[t]{0.64\linewidth}
-    \begin{minipage}[t]{\linewidth}
-        \section*{MIPS Data Path}
-        \centering
-        \includegraphics[width=\linewidth]{content/fig417.pdf}
-    \end{minipage}
+    \section*{MIPS Data Path}
+    \centering
+    \includegraphics[width=\linewidth]{content/fig417.pdf}
 \end{minipage}
 \begin{minipage}[t]{0.35\linewidth}
-    \begin{minipage}[t]{\linewidth}
-        \section*{1-bit ALU}
-        \includegraphics[width=\linewidth]{content/alu.pdf}
-    \end{minipage}
-    \begin{minipage}[t]{\linewidth}
-        \centering
+    \section*{1-bit ALU}
+    \includegraphics[width=\linewidth]{content/alu.pdf}
+    \begin{center}
         \begin{tabular}[t]{c|ccc|c}
             \toprule
             ALUControl & Ainvert & Binvert & Operation & Action \\
@@ -121,12 +87,12 @@
             {\tt 1100} & 1       & 1       & 00        & NOR    \\
             \bottomrule
         \end{tabular}
-    \end{minipage}
+    \end{center}
 \end{minipage}
 
 \begin{minipage}[t]{\linewidth}
     \section*{MIPS Control Path}
-    % \centering
+
     \begin{minipage}[t]{0.32\textwidth}
         \input{content/control.tex}
     \end{minipage}
@@ -136,12 +102,9 @@
 \end{minipage}
 
 \begin{minipage}[t]{0.24\linewidth}
-    \begin{minipage}[t]{\linewidth}
-        \input{content/number-system.tex}
-    \end{minipage}
-    \begin{minipage}[t]{\linewidth}
-        \input{content/k-map.tex}
-    \end{minipage}
+    \input{content/number-system.tex}
+
+    \input{content/k-map.tex}
 \end{minipage}
 
 
