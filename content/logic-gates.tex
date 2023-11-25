@@ -7,10 +7,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[and port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$a \cdot b$};
+			\draw (0,0) 	node[and port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$a \cdot b$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}
@@ -18,10 +18,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[or port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$a + b$};
+			\draw (0,0) 	node[or port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$a + b$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}
@@ -29,10 +29,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[xor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$a \oplus b$};
+			\draw (0,0) 	node[xor port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$a \oplus b$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}
@@ -40,9 +40,9 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[not port](G){};
-			\draw (G.in) node[anchor=east]{$a$};
-			\draw (G.out) node[anchor=west]{$\overline{a}$};
+			\draw (0,0) 	node[not port](G){};
+			\draw (G.in) 	node[anchor=east]{$a$};
+			\draw (G.out) 	node[anchor=west]{$\overline{a}$};
 		\end{circuitikz}
 	\end{Cell}
 \end{Row}
@@ -110,10 +110,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[nand port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a \cdot b}$};
+			\draw (0,0) 	node[nand port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$\overline{a \cdot b}$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}
@@ -121,10 +121,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[nor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a + b}$};
+			\draw (0,0) 	node[nor port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$\overline{a + b}$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}
@@ -132,10 +132,10 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) node[xnor port](G){};
-			\draw (G.in 1) node[anchor=east]{$a$};
-			\draw (G.in 2) node[anchor=east]{$b$};
-			\draw (G.out) node[anchor=west]{$\overline{a \oplus b}$};
+			\draw (0,0) 	node[xnor port](G){};
+			\draw (G.in 1) 	node[anchor=east]{$a$};
+			\draw (G.in 2) 	node[anchor=east]{$b$};
+			\draw (G.out) 	node[anchor=west]{$\overline{a \oplus b}$};
 		\end{circuitikz}
 	\end{Cell}
 	\begin{Cell}{1}

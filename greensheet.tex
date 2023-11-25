@@ -1,13 +1,12 @@
-\documentclass[10pt]{article}
-
-\usepackage[a3paper, left=15mm,right=10mm, top=8mm, bottom=8mm, headheight=10pt]{geometry}
-\usepackage{pgfpages}
-\pgfpagesuselayout{resize to}[a4paper]
+\documentclass{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,lining,scaled=.96]{FiraSans}
 \usepackage[lining,scaled=.96]{FiraMono}
 \usepackage{concmath}
+
+\usepackage[a4paper, left=8mm,right=8mm, top=8mm, bottom=8mm, headheight=10pt]{geometry}
+\usepackage[fontsize=6pt]{scrextend}
 
 \usepackage{amssymb}
 \usepackage{tabularx,booktabs,multirow}
@@ -18,7 +17,7 @@
 \usepackage{fancyvrb}
 
 \usepackage{titlesec}
-\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1ex}{}
+\titleformat*{\section}{\large\bfseries\scshape}
 \titlespacing{\section}{0pt}{1ex}{0pt}
 
 \usepackage{multicol}
@@ -31,10 +30,10 @@
 \usepackage[american]{circuitikz}
 \ctikzset{
     logic ports=ieee,
-    logic ports/scale=0.7,
+    logic ports/scale=0.36
 }
 
-
+\setlength{\tabcolsep}{1ex}
 \setlength\parindent{0pt}
 
 \begin{document}
@@ -70,7 +69,6 @@
 \vfill
 
 \clearpage
-
 
 \begin{minipage}[t]{0.64\linewidth}
     \section*{MIPS Data Path}

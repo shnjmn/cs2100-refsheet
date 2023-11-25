@@ -1,8 +1,8 @@
 \section*{Base Convention, ASCII Symbols}
 
-\newcolumntype{C}{>{\tt}c}
-\newcolumntype{R}{>{\tt}r}
-\begin{tabular}[t]{CRRC|RRC}
+\newcolumntype{C}{>{\ttfamily}c}
+\newcolumntype{R}{>{\ttfamily}r}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}CRRC|RRC}
     \toprule
     BIN    & DEC & HEX & ASCII & DEC & HEX & ASCII            \\
     \midrule
@@ -71,4 +71,4 @@
     111110 & 62  & 3e  & >     & 126 & 7e  & \textasciitilde  \\
     111111 & 63  & 3f  & ?     & 127 & 7f  & DEL              \\
     \bottomrule
-\end{tabular}
+\end{tabular*}
