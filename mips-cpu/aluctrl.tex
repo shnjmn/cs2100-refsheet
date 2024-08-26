@@ -1,14 +1,19 @@
-\begin{tabular}[t]{cccccc}
+\begin{tabular}[t]{llcclc}
 	\toprule
-	Opcode & ALUOp & Instruction & Funct    & ALU Action & ALUControl \\
+	\multicolumn{1}{c}{Instruction} &
+	\multicolumn{1}{c}{Opcode}      &
+	ALUOp                           &
+	Funct                           &
+	\multicolumn{1}{c}{ALU Action}  &
+	\multicolumn{1}{c}{ALUControl}                                                               \\
 	\midrule
-	LW     & {00}  & {lw}        & {xxxxxx} & add        & {0010}      \\
-	SW     & {00}  & {sw}        & {xxxxxx} & add        & {0010}      \\
-	BEQ    & {01}  & {beq}       & {xxxxxx} & sub        & {0110}      \\
-	R-type & {10}  & {add}       & {100000} & add        & {0010}      \\
-	R-type & {10}  & {sub}       & {100010} & sub        & {0110}      \\
-	R-type & {10}  & {and}       & {100100} & and        & {0000}      \\
-	R-type & {10}  & {or}        & {100101} & or         & {0001}      \\
-	R-type & {10}  & {slt}       & {101010} & slt        & {0111}      \\
+	\texttt{lw}                     & LW           & {00} & {xxxxxx} & add              & {0010} \\
+	\texttt{sw}                     & SW           & {00} & {xxxxxx} & add              & {0010} \\
+	\texttt{beq}                    & Branch equal & {01} & {xxxxxx} & subtract         & {0110} \\
+	\texttt{add}                    & R-type       & {10} & {100000} & add              & {0010} \\
+	\texttt{sub}                    & R-type       & {10} & {100010} & subtract         & {0110} \\
+	\texttt{and}                    & R-type       & {10} & {100100} & and              & {0000} \\
+	\texttt{or}                     & R-type       & {10} & {100101} & or               & {0001} \\
+	\texttt{slt}                    & R-type       & {10} & {101010} & set on less than & {0111} \\
 	\bottomrule
 \end{tabular}
