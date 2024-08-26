@@ -7,7 +7,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[and port](G){};
+			\draw (0,0) 	node[scale=1.5,and port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$a \cdot b$};
@@ -18,7 +18,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[or port](G){};
+			\draw (0,0) 	node[scale=1.5,or port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$a + b$};
@@ -29,7 +29,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[xor port](G){};
+			\draw (0,0) 	node[scale=1.5,xor port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$a \oplus b$};
@@ -40,7 +40,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[not port](G){};
+			\draw (0,0) 	node[scale=1.5,not port](G){};
 			\draw (G.in) 	node[anchor=east]{$a$};
 			\draw (G.out) 	node[anchor=west]{$\overline{a}$};
 		\end{circuitikz}
@@ -110,7 +110,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[nand port](G){};
+			\draw (0,0) 	node[scale=1.5,nand port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$\overline{a \cdot b}$};
@@ -121,7 +121,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[nor port](G){};
+			\draw (0,0) 	node[scale=1.5,nor port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$\overline{a + b}$};
@@ -132,7 +132,7 @@
 
 		\centering
 		\begin{circuitikz}[]
-			\draw (0,0) 	node[xnor port](G){};
+			\draw (0,0) 	node[scale=1.5,xnor port](G){};
 			\draw (G.in 1) 	node[anchor=east]{$a$};
 			\draw (G.in 2) 	node[anchor=east]{$b$};
 			\draw (G.out) 	node[anchor=west]{$\overline{a \oplus b}$};
