@@ -1,12 +1,12 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,lining,scaled=.96]{FiraSans}
 \usepackage[lining,scaled=.96]{FiraMono}
 \usepackage{concmath}
 
-\usepackage[a4paper, left=8mm,right=8mm, top=8mm, bottom=8mm, headheight=10pt]{geometry}
-\usepackage[fontsize=6pt]{scrextend}
+\usepackage[a3paper, left=16mm,right=16mm, top=16mm, bottom=16mm, headheight=0]{geometry}
+% \usepackage[fontsize=8pt]{scrextend}
 
 \usepackage{amssymb}
 \usepackage{tabularx,booktabs,multirow}
@@ -38,40 +38,40 @@
 
 \begin{document}
 
-\thispagestyle{empty}
+\pagestyle{empty}
 
-\textbf{\Huge MIPS Reference Sheet}
+\textbf{\Huge CS2100 Reference Sheet}
 
 \vspace{1em}
 
-\begin{minipage}[t]{0.68\linewidth}
+\begin{minipage}[t]{0.7\linewidth}
     \input{content/coreinsn.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.28\linewidth}
+    \input{content/insn-format.tex}
+
+    \vspace{1em}
 
     \input{content/register.tex}
 
-    \begin{minipage}[t]{0.71\linewidth}
-        \input{content/logic-gates.tex}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.28\linewidth}
-        \input{content/number-system.tex}
-    \end{minipage}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.3\linewidth}
-    \input{content/insn-format.tex}
+    \vspace{1em}
+    \vspace{1ex}
 
-    \input{content/ieee754.tex}
-
-    \input{content/ascii.tex}
+    \begin{enumerate}[label=\alph*.,leftmargin=1ex]
+        \item {May cause overflow exception}
+        \item {SignExtImm = \{16\{imm[15]\}, imm\}}
+        \item {ZeroExtImm = \{16\{1b'0\}, imm\}}
+        \item {BranchAddr = \{14\{imm[15]\}, imm, 2'b0\}}
+        \item {JumpAddr = \{PC+4[31:28], addr, 2'b0\}}
+        \item {Operands considered unsigned numbers \\ (vs. 2's comp.)}
+    \end{enumerate}
 \end{minipage}
 
 \vfill
 
-\clearpage
-
 \begin{minipage}[t]{0.64\linewidth}
-    \section*{MIPS Data Path}
+    \section*{MIPS Data Path with Control Unit}
     \centering
     \includegraphics[width=\linewidth]{content/fig417.pdf}
 \end{minipage}
@@ -94,8 +94,10 @@
     \end{center}
 \end{minipage}
 
+\vfill
+
 \begin{minipage}[t]{\linewidth}
-    \section*{MIPS Control Path}
+    \section*{MIPS Control Signals}
 
     \begin{minipage}[t]{0.32\textwidth}
         \input{content/control.tex}
@@ -105,13 +107,44 @@
     \end{minipage}
 \end{minipage}
 
-\vspace{1ex}
+\vfill
 
-\begin{minipage}[t]{0.32\linewidth}
-    \input{content/k-map.tex}
+\clearpage
+
+\begin{minipage}[t]{0.62\linewidth}
+    \begin{minipage}[t]{0.48\linewidth}
+        \section*{Nibble}
+        \input{content/number-hex.tex}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \section*{4-bit Number Systems}
+        \input{content/number-system.tex}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}[t]{0.48\linewidth}
+        \input{content/ieee754.tex}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \input{content/k-map.tex}
+    \end{minipage}
+
+    \begin{minipage}[t]{\linewidth}
+        \input{content/boolean-algebra.tex}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}[t]{\linewidth}
+        \input{content/logic-gates.tex}
+    \end{minipage}
 \end{minipage}
-\begin{minipage}[t]{0.64\linewidth}
-    \input{content/boolean-algebra.tex}
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+    \input{content/ascii.tex}
 \end{minipage}
 
 \end{document}

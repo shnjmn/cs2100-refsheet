@@ -9,86 +9,86 @@
 \begin{tabularx}{\textwidth}{lMAcDr}
     \toprule
     Name                                                                            &
-    \multicolumn{3}{l}{\textsc{Mnemonic, Operands}\hfill\textsc{Format}}            &
+    \multicolumn{3}{l}{\textsc{Mnemonic, Operands}\hfill\textsc{Fmt}}            &
     \multicolumn{2}{l}{\textsc{Description}\hfill\textsc{Opcode/Funct}}                                            \\
     \midrule
     Shift Left Logical                                                              & sll    & rd, rt, shamt & R &
-    R[rd] = R[rt] <{}< shamt                                                        & 0/0x00                       \\
+    R[rd] = R[rt] <{}< shamt                                                        & \texttt{0/0x00}                       \\
     Shift Right Logical                                                             & srl    & rd, rt, shamt & R &
-    R[rd] = R[rt] >{}> shamt                                                        & 0/0x02                       \\
+    R[rd] = R[rt] >{}> shamt                                                        & \texttt{0/0x02}                       \\
     Add                                                                             & add    & rd, rs, rt    & R &
-    R[rd] = R[rs] + R[rt]                          \footnotemark[1]                 & 0/0x20                       \\
+    R[rd] = R[rs] + R[rt]                          \footnotemark[1]                 & \texttt{0/0x20}                       \\
     Add Unsigned                                                                    & addu   & rd, rs, rt    & R &
-    R[rd] = R[rs] + R[rt]                                                           & 0/0x21                       \\
+    R[rd] = R[rs] + R[rt]                                                           & \texttt{0/0x21}                       \\
     Add Imm.                                                                        & addi   & rt, rs, imm   & I &
-    R[rt] = R[rs] + SignExtImm                     \footnotemark[1]\footnotemark[2] & 0x08                         \\
+    R[rt] = R[rs] + SignExtImm                     \footnotemark[1]\footnotemark[2] & \texttt{0x08}                       \\
     Add Imm. Unsigned                                                               & addiu  & rt, rs, imm   & I &
-    R[rt] = R[rs] + SignExtImm                     \footnotemark[2]                 & 0x09                         \\
+    R[rt] = R[rs] + SignExtImm                     \footnotemark[2]                 & \texttt{0x09}                       \\
     Subtract                                                                        & sub    & rd, rs, rt    & R &
-    R[rd] = R[rs] - R[rt]                          \footnotemark[1]                 & 0/0x22                       \\
+    R[rd] = R[rs] - R[rt]                          \footnotemark[1]                 & \texttt{0/0x22}                       \\
     Subtract Unsigned                                                               & subu   & rd, rs, rt    & R &
-    R[rd] = R[rs] - R[rt]                                                           & 0/0x23                       \\
+    R[rd] = R[rs] - R[rt]                                                           & \texttt{0/0x23}                       \\
     And                                                                             & and    & rd, rs, rt    & R &
-    R[rd] = R[rs] \& R[rt]                                                          & 0/0x24                       \\
+    R[rd] = R[rs] \& R[rt]                                                          & \texttt{0/0x24}                       \\
     And Imm.                                                                        & andi   & rt, rs, imm   & I &
-    R[rt] = R[rs] \& ZeroExtImm                    \footnotemark[3]                 & 0x0c                         \\
+    R[rt] = R[rs] \& ZeroExtImm                    \footnotemark[3]                 & \texttt{0x0c}                       \\
     Or                                                                              & or     & rd, rs, rt    & R &
-    R[rd] = R[rs] | R[rt]                                                           & 0/0x25                       \\
+    R[rd] = R[rs] | R[rt]                                                           & \texttt{0/0x25}                       \\
     Or Imm.                                                                         & ori    & rt, rs, imm   & I &
-    R[rt] = R[rs] | ZeroExtImm                     \footnotemark[3]                 & 0x0d                         \\
+    R[rt] = R[rs] | ZeroExtImm                     \footnotemark[3]                 & \texttt{0x0d}                       \\
     Exclusive-Or                                                                    & xor    & rd, rs, rt    & R &
-    R[rd] = R[rs] \textasciicircum{} R[rt]                                          & 0/0x26                       \\
+    R[rd] = R[rs] \textasciicircum{} R[rt]                                          & \texttt{0/0x26}                       \\
     Exclusive-Or Imm.                                                               & xori   & rt, rs, imm   & I &
-    R[rt] = R[rs] \textasciicircum{} ZeroExtImm    \footnotemark[3]                 & 0x0e                         \\
+    R[rt] = R[rs] \textasciicircum{} ZeroExtImm    \footnotemark[3]                 & \texttt{0x0e}                       \\
     Nor                                                                             & nor    & rd, rs, rt    & R &
-    R[rd] = \textasciitilde (R[rs] | R[rt])                                         & 0/0x27                       \\
+    R[rd] = \textasciitilde (R[rs] | R[rt])                                         & \texttt{0/0x27}                       \\
     Load Upper Imm.                                                                 & lui    & rt, imm       & I &
-    R[rt] = \{imm, 16'b0\}                                                          & 0x0f                         \\
+    R[rt] = \{imm, 16'b0\}                                                          & \texttt{0x0f}                       \\
     \midrule
     Set Less Than                                                                   & slt    & rd, rs, rt    & R &
-    R[rd] = (R[rs] < R[rt]) ? 1 : 0                                                 & 0/0x2a                       \\
-    Set Less Than Unsigned                                                          & sltu   & rd, rs, rt    & R &
-    R[rd] = (R[rs] < R[rt]) ? 1 : 0                \footnotemark[6]                 & 0/0x2b                       \\
-    Set Less Than Imm.                                                              & slti   & rt, rs, imm   & I &
-    R[rt] = (R[rs] < SignExtImm) ? 1 : 0           \footnotemark[2]                 & 0x0a                         \\
-    Set Less Than Imm. Unsigned                                                     & sltiu  & rt, rs, imm   & I &
-    R[rt] = (R[rs] < SignExtImm) ? 1 : 0           \footnotemark[2]\footnotemark[6] & 0x0b                         \\
+    R[rd] = (R[rs] < R[rt]) ? 1 : 0                                                 & \texttt{0/0x2a}                       \\
+    \quad\textasciitilde{} Unsigned                                                          & sltu   & rd, rs, rt    & R &
+    R[rd] = (R[rs] < R[rt]) ? 1 : 0                \footnotemark[6]                 & \texttt{0/0x2b}                       \\
+    \quad\textasciitilde{} Imm.                                                              & slti   & rt, rs, imm   & I &
+    R[rt] = (R[rs] < SignExtImm) ? 1 : 0           \footnotemark[2]                 & \texttt{0x0a}                       \\
+    \quad\textasciitilde{} Imm. Unsigned                                                     & sltiu  & rt, rs, imm   & I &
+    R[rt] = (R[rs] < SignExtImm) ? 1 : 0           \footnotemark[2]\footnotemark[6] & \texttt{0x0b}                       \\
     \midrule
     Jump                                                                            & j      & target        & J &
-    PC = JumpAddr                                  \footnotemark[5]                 & 0x02                         \\
+    PC = JumpAddr                                  \footnotemark[5]                 & \texttt{0x02}                       \\
     Jump And Link                                                                   & jal    & target        & J &
-    R[31] = PC + 8; PC = JumpAddr                  \footnotemark[5]                 & 0x03                         \\
+    R[31] = PC + 8; PC = JumpAddr                  \footnotemark[5]                 & \texttt{0x03}                       \\
     Branch On Equal                                                                 & beq    & rs, rt, label & I &
-    if(R[rs] == R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & 0x04                         \\
+    if(R[rs] == R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & \texttt{0x04}                       \\
     Branch On Not Equal                                                             & bne    & rs, rt, label & I &
-    if(R[rs] != R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & 0x05                         \\
+    if(R[rs] != R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & \texttt{0x05}                       \\
     Jump Register                                                                   & jr     & rs            & R &
-    PC = R[rs]                                                                      & 0/0x08                       \\
+    PC = R[rs]                                                                      & \texttt{0/0x08}                       \\
     \midrule
     Load Word                                                                       & lw     & rt, imm(rs)   & I &
-    R[rt] = M[R[rs] + SignExtImm]                  \footnotemark[2]                 & 0x23                         \\
+    R[rt] = M[R[rs] + SignExtImm]                  \footnotemark[2]                 & \texttt{0x23}                       \\
     Load Byte Unsigned                                                              & lbu    & rt, imm(rs)   & I &
-    R[rt] = \{24'b0, M[R[rs] + SignExtImm](7:0)\}  \footnotemark[2]                 & 0x24                         \\
-    Load Halfword Unsigned                                                          & lhu    & rt, imm(rs)   & I &
-    R[rt] = \{16'b0, M[R[rs] + SignExtImm](15:0)\} \footnotemark[2]                 & 0x25                         \\
+    R[rt] = \{24'b0, M[R[rs] + SignExtImm](7:0)\}  \footnotemark[2]                 & \texttt{0x24}                       \\
+    Load Halfword Un\textasciitilde{}                                                          & lhu    & rt, imm(rs)   & I &
+    R[rt] = \{16'b0, M[R[rs] + SignExtImm](15:0)\} \footnotemark[2]                 & \texttt{0x25}                       \\
     Store Byte                                                                      & sb     & rt, imm(rs)   & I &
-    M[R[rs] + SignExtImm](7:0) = R[rt](7:0)        \footnotemark[2]                 & 0x28                         \\
+    M[R[rs] + SignExtImm](7:0) = R[rt](7:0)        \footnotemark[2]                 & \texttt{0x28}                       \\
     Store Halfword                                                                  & sh     & rt, imm(rs)   & I &
-    M[R[rs] + SignExtImm](15:0) = R[rt](15:0)      \footnotemark[2]                 & 0x29                         \\
+    M[R[rs] + SignExtImm](15:0) = R[rt](15:0)      \footnotemark[2]                 & \texttt{0x29}                       \\
     Store Word                                                                      & sw     & rt, imm(rs)   & I &
-    M[R[rs] + SignExtImm] = R[rt]                  \footnotemark[2]                 & 0x2b                         \\
+    M[R[rs] + SignExtImm] = R[rt]                  \footnotemark[2]                 & \texttt{0x2b}                       \\
     \bottomrule
 \end{tabularx}
 
-\begin{minipage}[t]{\linewidth-4em}
-    \begin{multicols}{2}
-        \small
-        \footnotemark[1]{May cause overflow exception}    \\
-        \footnotemark[2]{SignExtImm = \{16\{immediate[15]\}, immediate\}} \\
-        \footnotemark[3]{ZeroExtImm = \{16\{1b'0\}, immediate\}}    \\
-        \footnotemark[4]{BranchAddr = \{14\{immediate[15]\}, immediate, 2'b0\}} \\
-        \footnotemark[5]{JumpAddr = \{PC+4[31:28], address, 2'b0\}}    \\
-        \footnotemark[6]{Operands considered unsigned numbers (vs. 2's comp.)}
-        % \footnotemark[7]{Atomic test \& set pair; R[rt] = 1 if pair atomic, 0 if not atomic}
-    \end{multicols}
-\end{minipage}
+% \begin{minipage}[t]{\linewidth-4em}
+%     \begin{multicols}{2}
+%         \small
+%         \footnotemark[1]{May cause overflow exception}    \\
+%         \footnotemark[2]{SignExtImm = \{16\{immediate[15]\}, immediate\}} \\
+%         \footnotemark[3]{ZeroExtImm = \{16\{1b'0\}, immediate\}}    \\
+%         \footnotemark[4]{BranchAddr = \{14\{immediate[15]\}, immediate, 2'b0\}} \\
+%         \footnotemark[5]{JumpAddr = \{PC+4[31:28], address, 2'b0\}}    \\
+%         \footnotemark[6]{Operands considered unsigned numbers (vs. 2's comp.)}
+%         % \footnotemark[7]{Atomic test \& set pair; R[rt] = 1 if pair atomic, 0 if not atomic}
+%     \end{multicols}
+% \end{minipage}

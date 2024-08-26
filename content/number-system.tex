@@ -1,24 +1,24 @@
-\section*{Nibble}
-\centering
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccccc}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
     \toprule
-    HEX        & DEC & BIN           & 1s   & 2s   \\
+    Value        & Sign \& Mag & 1s Comp.    & 2s Comp.      \\
     \midrule
-    \texttt{0} & 0   & \texttt{0000} & $+0$ & $+0$ \\
-    \texttt{1} & 1   & \texttt{0001} & $+1$ & $+1$ \\
-    \texttt{2} & 2   & \texttt{0010} & $+2$ & $+2$ \\
-    \texttt{3} & 3   & \texttt{0011} & $+3$ & $+3$ \\
-    \texttt{4} & 4   & \texttt{0100} & $+4$ & $+4$ \\
-    \texttt{5} & 5   & \texttt{0101} & $+5$ & $+5$ \\
-    \texttt{6} & 6   & \texttt{0110} & $+6$ & $+6$ \\
-    \texttt{7} & 7   & \texttt{0111} & $+7$ & $+7$ \\
-    \texttt{8} & 8   & \texttt{1000} & $-7$ & $-8$ \\
-    \texttt{9} & 9   & \texttt{1001} & $-6$ & $-7$ \\
-    \texttt{A} & 10  & \texttt{1010} & $-5$ & $-6$ \\
-    \texttt{B} & 11  & \texttt{1011} & $-4$ & $-5$ \\
-    \texttt{C} & 12  & \texttt{1100} & $-3$ & $-4$ \\
-    \texttt{D} & 13  & \texttt{1101} & $-2$ & $-3$ \\
-    \texttt{E} & 14  & \texttt{1110} & $-1$ & $-2$ \\
-    \texttt{F} & 15  & \texttt{1111} & $-0$ & $-1$ \\
+    $+7$         & \texttt{0111}    & \texttt{0111} & \texttt{0111} \\
+    $+6$         & \texttt{0110}    & \texttt{0110} & \texttt{0110} \\
+    $+5$         & \texttt{0101}    & \texttt{0101} & \texttt{0101} \\
+    $+4$         & \texttt{0100}    & \texttt{0100} & \texttt{0100} \\
+    $+3$         & \texttt{0011}    & \texttt{0011} & \texttt{0011} \\
+    $+2$         & \texttt{0010}    & \texttt{0010} & \texttt{0010} \\
+    $+1$         & \texttt{0001}    & \texttt{0001} & \texttt{0001} \\
+    $+0$         & \texttt{0000}    & \texttt{0000} & \texttt{0000} \\
+    \midrule
+    $-0$         & \texttt{1000}    & \texttt{1111} & \texttt{-}    \\
+    $-1$         & \texttt{1001}    & \texttt{1110} & \texttt{1111} \\
+    $-2$         & \texttt{1010}    & \texttt{1101} & \texttt{1110} \\
+    $-3$         & \texttt{1011}    & \texttt{1100} & \texttt{1101} \\
+    $-4$         & \texttt{1100}    & \texttt{1011} & \texttt{1100} \\
+    $-5$         & \texttt{1101}    & \texttt{1010} & \texttt{1011} \\
+    $-6$         & \texttt{1110}    & \texttt{1001} & \texttt{1010} \\
+    $-7$         & \texttt{1111}    & \texttt{1000} & \texttt{1001} \\
+    $-8$         & \texttt{-}       & \texttt{-}    & \texttt{1000} \\
     \bottomrule
 \end{tabular*}
