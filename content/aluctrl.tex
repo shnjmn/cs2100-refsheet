@@ -14,15 +14,15 @@
 % \end{tabular}
 \begin{tabular}[t]{cccccc}
     \toprule
-    Opcode & ALUOp       & Operation        & Funct           & ALU action       & ALU control   \\
+    Opcode & ALUOp & Instruction & Funct    & ALU action       & ALU control \\
     \midrule
-    LW     & {00} & load word        & {xxxxxx} & add              & {0010} \\
-    SW     & {00} & store word       & {xxxxxx} & add              & {0010} \\
-    BEQ    & {01} & branch equal     & {xxxxxx} & subtract         & {0110} \\
-    R-type & {10} & add              & {100000} & add              & {0010} \\
-    R-type & {10} & subtract         & {100010} & subtract         & {0110} \\
-    R-type & {10} & AND              & {100100} & AND              & {0000} \\
-    R-type & {10} & OR               & {100101} & OR               & {0001} \\
-    R-type & {10} & set-on-less-than & {101010} & set-on-less-than & {0111} \\
+    LW     & {00}  & {lw}        & {xxxxxx} & add              & {0010}      \\
+    SW     & {00}  & {sw}        & {xxxxxx} & add              & {0010}      \\
+    BEQ    & {01}  & {beq}       & {xxxxxx} & subtract         & {0110}      \\
+    R-type & {10}  & {add}       & {100000} & add              & {0010}      \\
+    R-type & {10}  & {sub}       & {100010} & subtract         & {0110}      \\
+    R-type & {10}  & {and}       & {100100} & and              & {0000}      \\
+    R-type & {10}  & {or}        & {100101} & or               & {0001}      \\
+    R-type & {10}  & {slt}       & {101010} & set-on-less-than & {0111}      \\
     \bottomrule
 \end{tabular}
