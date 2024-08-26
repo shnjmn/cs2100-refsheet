@@ -58,9 +58,9 @@
     PC = JumpAddr                                  \footnotemark[5]                 & \texttt{0x02}                       \\
     Jump And Link                                                                   & jal    & target        & J &
     R[31] = PC + 8; PC = JumpAddr                  \footnotemark[5]                 & \texttt{0x03}                       \\
-    Branch On Equal                                                                 & beq    & rs, rt, label & I &
+    Branch on Equal                                                                 & beq    & rs, rt, label & I &
     if(R[rs] == R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & \texttt{0x04}                       \\
-    Branch On Not Equal                                                             & bne    & rs, rt, label & I &
+    Branch on Not Equal                                                             & bne    & rs, rt, label & I &
     if(R[rs] != R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 & \texttt{0x05}                       \\
     Jump Register                                                                   & jr     & rs            & R &
     PC = R[rs]                                                                      & \texttt{0/0x08}                       \\

@@ -3,9 +3,9 @@ $$
     (-1)^S \times M \times 2^{E-B}
 $$
 
-Single Precision Format (Bias = 127) \vspace{1ex}
+Single Precision Format (Bias = 127) \vspace{1em}
 \begin{center}
-    \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+    \begin{bytefield}[boxformatting=\centering\small,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
         \bitheader[endianness=big]{0,22,23,30,31} \\
         \bitbox{1}{S} &
         \bitbox{8}{Exponent} &
@@ -15,7 +15,7 @@ Single Precision Format (Bias = 127) \vspace{1ex}
 
 Double Precision Format (Bias = 1023)
 \begin{center}
-    \begin{bytefield}[boxformatting=\centering,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
+    \begin{bytefield}[boxformatting=\centering\small,bitwidth=0.03\linewidth,bitheight=1.5em]{32}
         \bitheader[lsb=32,endianness=big]{32,51,52,62,63} \\
         \bitbox{1}{S} &
         \bitbox{11}{Exponent} &
