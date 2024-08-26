@@ -1,0 +1,36 @@
+\hyphenation{Unsigned}
+\renewcommand{\thefootnote}{\alph{footnote}}
+\newcolumntype{M}{>{\tt}l}
+\newcolumntype{A}{>{\tt}l}
+\newcolumntype{D}{>{\raggedright\arraybackslash\hangindent=4ex}X}
+
+\begin{tabularx}{\textwidth}{lMAccD}
+	\toprule
+	\multicolumn{2}{l}{\textsc{Name}\hfill\textsc{Mnemonic}} &
+	\multicolumn{2}{l}{\textsc{Operands}\hfill\textsc{Fmt}}  &
+	\multicolumn{2}{l}{\textsc{Opcode/Funct}\hfill\textsc{Operation}\hfill\phantom{x}}                                                                                                      \\
+	\midrule
+	Add                                                      & add  & rd, rs, rt    & R & \texttt{0/0x20} & R[rd] = R[rs] + R[rt]                          \footnotemark[1]                 \\
+	Add Imm.                                                 & addi & rt, rs, imm   & I & \texttt{0x08}   & R[rt] = R[rs] + SignExtImm                     \footnotemark[1]\footnotemark[2] \\
+	Subtract                                                 & sub  & rd, rs, rt    & R & \texttt{0/0x22} & R[rd] = R[rs] - R[rt]                          \footnotemark[1]                 \\
+	And                                                      & and  & rd, rs, rt    & R & \texttt{0/0x24} & R[rd] = R[rs] \& R[rt]                                                          \\
+	And Imm.                                                 & andi & rt, rs, imm   & I & \texttt{0x0c}   & R[rt] = R[rs] \& ZeroExtImm                    \footnotemark[3]                 \\
+	Or                                                       & or   & rd, rs, rt    & R & \texttt{0/0x25} & R[rd] = R[rs] | R[rt]                                                           \\
+	Or Imm.                                                  & ori  & rt, rs, imm   & I & \texttt{0x0d}   & R[rt] = R[rs] | ZeroExtImm                     \footnotemark[3]                 \\
+	Exclusive-Or                                             & xor  & rd, rs, rt    & R & \texttt{0/0x26} & R[rd] = R[rs] \textasciicircum{} R[rt]                                          \\
+	Exclusive-Or Imm.                                        & xori & rt, rs, imm   & I & \texttt{0x0e}   & R[rt] = R[rs] \textasciicircum{} ZeroExtImm    \footnotemark[3]                 \\
+	Nor                                                      & nor  & rd, rs, rt    & R & \texttt{0/0x27} & R[rd] = \textasciitilde (R[rs] | R[rt])                                         \\
+	Shift Left Logical                                       & sll  & rd, rt, shamt & R & \texttt{0/0x00} & R[rd] = R[rt] <{}< shamt                                                        \\
+	Shift Right Logical                                      & srl  & rd, rt, shamt & R & \texttt{0/0x02} & R[rd] = R[rt] >{}>{}> shamt                                                     \\
+	Set Less Than                                            & slt  & rd, rs, rt    & R & \texttt{0/0x2a} & R[rd] = (R[rs] < R[rt]) ? 1 : 0                                                 \\
+	Set Less Than Imm.                                       & slti & rt, rs, imm   & I & \texttt{0x0a}   & R[rt] = (R[rs] < SignExtImm) ? 1 : 0           \footnotemark[2]                 \\
+	Load Upper Imm.                                          & lui  & rt, imm       & I & \texttt{0x0f}   & R[rt] = \{imm, 16'b0\}                                                          \\
+	Load Word                                                & lw   & rt, imm(rs)   & I & \texttt{0x23}   & R[rt] = M[R[rs] + SignExtImm]                  \footnotemark[2]                 \\
+	Store Word                                               & sw   & rt, imm(rs)   & I & \texttt{0x2b}   & M[R[rs] + SignExtImm] = R[rt]                  \footnotemark[2]                 \\
+	Branch on Equal                                          & beq  & rs, rt, label & I & \texttt{0x04}   & if(R[rs] == R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 \\
+	Branch on Not Equal                                      & bne  & rs, rt, label & I & \texttt{0x05}   & if(R[rs] != R[rt]) PC = PC + 4 + BranchAddr    \footnotemark[4]                 \\
+	Jump                                                     & j    & target        & J & \texttt{0x02}   & PC = JumpAddr                                  \footnotemark[5]                 \\
+	Jump And Link                                            & jal  & target        & J & \texttt{0x03}   & R[31] = PC + 8; PC = JumpAddr                  \footnotemark[5]                 \\
+	Jump Register                                            & jr   & rs            & R & \texttt{0/0x08} & PC = R[rs]                                                                      \\
+	\bottomrule
+\end{tabularx}

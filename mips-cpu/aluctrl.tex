@@ -1,0 +1,14 @@
+\begin{tabular}[t]{cccccc}
+	\toprule
+	Opcode & ALUOp & Instruction & Funct    & ALU Action & ALUControl \\
+	\midrule
+	LW     & {00}  & {lw}        & {xxxxxx} & add        & {0010}      \\
+	SW     & {00}  & {sw}        & {xxxxxx} & add        & {0010}      \\
+	BEQ    & {01}  & {beq}       & {xxxxxx} & sub        & {0110}      \\
+	R-type & {10}  & {add}       & {100000} & add        & {0010}      \\
+	R-type & {10}  & {sub}       & {100010} & sub        & {0110}      \\
+	R-type & {10}  & {and}       & {100100} & and        & {0000}      \\
+	R-type & {10}  & {or}        & {100101} & or         & {0001}      \\
+	R-type & {10}  & {slt}       & {101010} & slt        & {0111}      \\
+	\bottomrule
+\end{tabular}

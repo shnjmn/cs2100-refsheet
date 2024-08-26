@@ -45,106 +45,98 @@
 \vspace{1em}
 
 \begin{minipage}[t]{0.68\linewidth}
-    \input{content/coreinsn.tex}
+	\section*{Core Instruction Set}
+	\input{mips-isa/insn.tex}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.3\linewidth}
-    \input{content/insn-format.tex}
+	\section*{Register Name, Number, Use}
+	\input{mips-isa/register.tex}
 
-    \vspace{1em}
-
-    \input{content/register.tex}
-
-    \vspace{1em}
-    \vspace{1ex}
-
-    \begin{enumerate}[label=\alph*.,leftmargin=1em]
-        \item {May cause overflow exception}
-        \item {SignExtImm = \{16\{imm[15]\}, imm\}}
-        \item {ZeroExtImm = \{16\{1b'0\}, imm\}}
-        \item {BranchAddr = \{14\{imm[15]\}, imm, 2'b0\}}
-        \item {JumpAddr = \{PC+4[31:28], addr, 2'b0\}}
-        \item {Operands considered unsigned numbers \\ (vs. 2's comp.)}
-    \end{enumerate}
+	\input{mips-isa/insn-footnote.tex}
 \end{minipage}
+
+
 
 \vfill
 
 \begin{minipage}[t]{0.64\linewidth}
-    \section*{MIPS Data Path with Control Unit}
-    \centering
-    \includegraphics[width=\linewidth]{content/fig417.pdf}
+	\section*{MIPS Data Path with Control Unit}
+	\includegraphics[width=\linewidth]{mips-cpu/fig417.pdf}
+
+	\section*{MIPS Control Signals}
+	\input{mips-cpu/control.tex}
 \end{minipage}
 \begin{minipage}[t]{0.35\linewidth}
-    \section*{1-bit ALU}
-    \includegraphics[width=\linewidth]{content/alu.pdf}
-    \begin{center}
-        \begin{tabular}[t]{c|ccc|c}
-            \toprule
-            ALUControl & Ainvert & Binvert & Operation & Action \\
-            \midrule
-            {0000} & 0       & 0       & 00        & and    \\
-            {0001} & 0       & 0       & 01        & or     \\
-            {0010} & 0       & 0       & 10        & add    \\
-            {0110} & 0       & 1       & 10        & sub    \\
-            {0111} & 0       & 1       & 11        & slt    \\
-            {1100} & 1       & 1       & 00        & nor    \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
+	\section*{Basic Instruction Formats}
+	\vspace{1ex}
+	\input{mips-isa/insn-format.tex}
+
+	\vspace{1em}
+	\vspace{1ex}
+
+	\section*{1-bit ALU}
+
+	\includegraphics[width=\linewidth]{mips-cpu/alu.pdf}
+
+	\vspace{1ex}
+	\vspace{0.5mm}
+	\input{mips-cpu/one-bit-alucontrol.tex}
 \end{minipage}
+
+
 
 \vfill
 
 \begin{minipage}[t]{\linewidth}
-    \begin{minipage}[t]{0.5\textwidth}
-        \section*{MIPS ALUControl}
-        \input{content/aluctrl.tex}
-    \end{minipage}
-    \begin{minipage}[t]{0.28\textwidth}
-        \section*{MIPS Control Outputs}
-        \input{content/control.tex}
-    \end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\section*{MIPS ALUControl}
+		\input{mips-cpu/aluctrl.tex}
+	\end{minipage}
+	\begin{minipage}[t]{0.28\textwidth}
+	\end{minipage}
 \end{minipage}
 
 \vfill
 
 \clearpage
 
-\begin{minipage}[t]{0.62\linewidth}
-    \begin{minipage}[t]{0.48\linewidth}
-        \section*{Nibble}
-        \input{content/number-hex.tex}
-    \end{minipage}
+\begin{minipage}[t]{0.68\linewidth}
+	\begin{minipage}[t]{0.48\linewidth}
+		\section*{4-bit Number Systems}
+		\input{number/number-system.tex}
+	\end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\linewidth}
-        \section*{4-bit Number Systems}
-        \input{content/number-system.tex}
-    \end{minipage}
+		\section*{Nibble}
+		\input{number/number-hex.tex}
+	\end{minipage}
 
-    \vspace{1em}
+	\vspace{1em}
 
-    \begin{minipage}[t]{0.64\linewidth}
-        \input{content/ieee754.tex}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.32\linewidth}
-        \input{content/k-map.tex}
-    \end{minipage}
+	\begin{minipage}[t]{0.64\linewidth}
+		\input{number/ieee754.tex}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.32\linewidth}
+		\input{digital-circuit/k-map.tex}
+	\end{minipage}
 
-    \begin{minipage}[t]{\linewidth}
-        \input{content/boolean-algebra.tex}
-    \end{minipage}
+	\begin{minipage}[t]{\linewidth}
+		\input{digital-circuit/boolean-algebra.tex}
+	\end{minipage}
 
-    \vspace{1em}
+	\vspace{1em}
 
-    \begin{minipage}[t]{\linewidth}
-        \input{content/logic-gates.tex}
-    \end{minipage}
+	\begin{minipage}[t]{\linewidth}
+		\input{digital-circuit/logic-gates.tex}
+	\end{minipage}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.35\linewidth}
-    \input{content/ascii.tex}
+\begin{minipage}[t]{0.28\linewidth}
+	\section*{ASCII}
+    \centering
+	\input{number/ascii.tex}
 \end{minipage}
 
 \end{document}
