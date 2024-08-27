@@ -1,0 +1,31 @@
+name: Build
+permissions:
+  contents: write
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Build the Latex project
+      - name: Build latex project
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: refsheet.tex
+          latexmk_shell_escape: true
+
+      # Create a pre-release with the pdf
+      - name: Create release
+        shell: bash
+        run: |
+          GIT_TAG=pre-$(date -I)-$GITHUB_RUN_NUMBER
+          git push --delete origin $GIT_TAG || echo "error ignored"
+          gh release delete $GIT_TAG -y || echo "error ignored"
+          gh release create $GIT_TAG refsheet.pdf -p -t "Auto Build $GITHUB_REF"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
